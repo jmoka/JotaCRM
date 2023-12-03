@@ -32,7 +32,15 @@ public class Db extends AbstractConnection {
 
 	@Override
 	public void closeConnection() {
-		// TODO Auto-generated method stub
+		if(conn !=null) {
+			try {
+			conn.close();
+			System.out.println("Banco de Dados desconectado");
+			}catch(SQLException e) {
+				System.out.println("Banco de Dados encontrou um problema para desconectar");
+				throw new DbExcepition(e.getMessage());
+			}
+		}
 
 	}
 

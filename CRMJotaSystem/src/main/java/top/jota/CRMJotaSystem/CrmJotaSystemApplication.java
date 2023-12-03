@@ -12,6 +12,7 @@ public class CrmJotaSystemApplication {
 		SpringApplication.run(CrmJotaSystemApplication.class, args);
 		Db db = new Db();
 		db.connectionMysql();
+		//db.closeConnection();
 	}
 
 	
