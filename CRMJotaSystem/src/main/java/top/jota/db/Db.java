@@ -12,19 +12,28 @@ import top.jota.db.properties.DbProperties;
 public class Db extends AbstractConnection {
 
 	@Override
-	public Connection connectionMysql() {
+	public Connection connection() {
 		if (conn == null) {
 			Properties props = DbProperties.dbPropretiesMysqlLocal();
 			String url = props.getProperty("dburl");
+			
+			
+			// THREAD DE CONEXAOF
+			
+			Thread thread = new Thread(()->{
+				
 			try {
-				conn = DriverManager.getConnection(url, props);
-				System.out.println("Banco de dados Conectado");
+				
+					conn = DriverManager.getConnection(url, props);
+					System.out.println("Banco de dados Conectado");
+				
+				
 			} catch (SQLException e) {
 				System.err.println("Banco de dados Conectado");
 				throw new DbExcepition(e.getMessage());
 
 			}
-
+			});thread.start();
 		}
 		return conn;
 

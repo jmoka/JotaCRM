@@ -14,6 +14,7 @@ CRM Contábil e Controle de Clientes
     - JPA
     - JSP
     - JDBC
+    - Threads ( No Spring Boot o controle das thread , porem utilizamos manualmente para efeito didatico )
     
 # Roteiro de Construção
 
@@ -53,7 +54,7 @@ CRM Contábil e Controle de Clientes
 	- void delete_Nivel(Long id);	
 
 ## Abastracts)
-### Abstract Nivel
+### NIvel)  Abstract Nivel
         - Implements InterfaceNivel
         - Basic attributes 
         - Associations 
@@ -62,9 +63,10 @@ CRM Contábil e Controle de Clientes
         - hashCode & equals
         - toString
         - Serializable
-        
+
 ## Entidades) 
         - extendes Abstract
+        - private static final long serialVersionUID = 1L;
 
 ## Services
 ### Service Nivel

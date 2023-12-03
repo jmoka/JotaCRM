@@ -4,7 +4,7 @@ import java.sql.Connection;
 
 public interface InterfaceConnection {
 	
-		Connection connectionMysql();		
+		Connection connection();		
 		void closeConnection();
 	
 }

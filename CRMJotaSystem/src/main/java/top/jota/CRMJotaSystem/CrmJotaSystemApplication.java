@@ -10,10 +10,10 @@ public class CrmJotaSystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrmJotaSystemApplication.class, args);
-		Db db = new Db();
-		db.connectionMysql();
-		//db.closeConnection();
+		
 	}
+	
+	
 
 	
 }
