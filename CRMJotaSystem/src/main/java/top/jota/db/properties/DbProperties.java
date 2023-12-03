@@ -10,7 +10,7 @@ public class DbProperties {
 
 	public static Properties dbPropretiesMysqlLocal() {
 
-		try (FileInputStream fs = new FileInputStream("src/main/resources/db.properties")) {
+		try (FileInputStream fs = new FileInputStream("src/main/resources/cpanel.properties")) {
 		
 			Properties props = new Properties();
 			props.load(fs);
