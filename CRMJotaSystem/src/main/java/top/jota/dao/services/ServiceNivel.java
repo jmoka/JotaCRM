@@ -4,15 +4,13 @@ import java.sql.Connection;
 import java.util.List;
 
 import top.jota.dao.entities.Nivel;
-import top.jota.dao.entities.interfaces.InterfaceNivel;
+import top.jota.dao.services.interfaces.InterfaceNivel;
 
 public class ServiceNivel implements InterfaceNivel {
 	
 	private Connection conn;
 	
-	public ServiceNivel() {
 	
-	}
 	public ServiceNivel(Connection conn) {
 		this.conn = conn;
 	}

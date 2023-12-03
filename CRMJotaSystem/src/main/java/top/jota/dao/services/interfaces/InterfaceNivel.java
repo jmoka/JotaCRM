@@ -1,4 +1,4 @@
-package top.jota.dao.entities.interfaces;
+package top.jota.dao.services.interfaces;
 
 import java.util.List;
 
