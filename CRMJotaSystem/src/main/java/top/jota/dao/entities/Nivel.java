@@ -1,5 +1,7 @@
 package top.jota.dao.entities;
 
-public class Nivel {
+import top.jota.dao.entities.abstracts.AbstractNivel;
+
+public class Nivel extends  AbstractNivel{
 
 }

@@ -39,17 +39,37 @@ CRM Contábil e Controle de Clientes
 ## 3) Bibliotecas
         - mysql-connector-j-8.2.0
 
+# < ========================================================== >
+
 # Checklist:
-## Entidades)
-        - Implementes Interface
-        - Extendes Class Abstract implements Interfaces
-        - Basic attributes
-        - Associations (instantiate collections)
-        - Constructors
+
+## Interfaces)
+### Interfaces Nivel
+
+        - List<Nivel> findAll_Nivel();
+        - Nivel findById_Nivel(Long id);
+        - Nivel insert_Nivel(Nivel objUser);
+	- Nivel update_Nivel(Long id, Nivel obj);	
+	- void delete_Nivel(Long id);	
+
+## Abastracts)
+### Abstract Nivel
+        - Implements InterfaceNivel
+        - Basic attributes 
+        - Associations 
+        - Constructors 
         - Getters & Setters (collections: only get)
         - hashCode & equals
         - toString
         - Serializable
+        
+## Entidades) 
+        - extendes Abstract
+
+## Services
+### Service Nivel
+        - Implements InterfaceNivel
+
 ## Recuperação Banco de Dados)
 ### Statement
         - Em Java, a interface Statement faz parte da API JDBC (Java Database Connectivity) e é usada para < executar instruções SQL > em um banco de dados. Três principais métodos da interface Statement incluem:
