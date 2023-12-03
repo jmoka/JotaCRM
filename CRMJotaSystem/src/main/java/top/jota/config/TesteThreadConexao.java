@@ -17,10 +17,13 @@ public class TesteThreadConexao implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-    	// cria um pool de threads que pode executar tarefas em paralelo, 
+    	
+    	
+    	// Cria um pool de threads que pode executar tarefas em paralelo, 
     	// e o número de threads é limitado por numberOfConnections
         int numberOfConnections = 2;
         ExecutorService executorService = Executors.newFixedThreadPool(numberOfConnections);
+        
 
         for (int i = 0; i < numberOfConnections; i++) {
             Db db = new Db();

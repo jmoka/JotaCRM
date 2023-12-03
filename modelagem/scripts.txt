@@ -1,0 +1,16 @@
+REPOSITÓRIO GIT
+	- git@github.com:jmoka/JotaCRM.git
+
+
+
+=================================================
+INSERTS 
+================================================
+
+INSERT INTO Tbl_Nivel (nomeNivel) VALUES
+('Nível 1'),
+('Nível 2'),
+('Nível 3'),
+('Nível 4'),
+('Nível 5');
+===============================================
