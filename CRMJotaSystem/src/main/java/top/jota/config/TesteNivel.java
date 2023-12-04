@@ -19,7 +19,7 @@ public class TesteNivel implements CommandLineRunner {
     @Override
     public void run(String... args) {
     
-    	Nivel n  = new Nivel("super");
+    	Nivel n  = new Nivel("secretario");
     	System.out.println(n);
     	FactoryServices fabricaNivel = new FactoryServices();
     	fabricaNivel.FactoryNivel().insert_Nivel(n);

@@ -24,7 +24,7 @@ public class Db extends AbstractConnection {
                 System.out.println("Banco de dados Conectado");
             } catch (SQLException e) {
                 System.err.println("Erro ao conectar ao banco de dados: " + e.getMessage());
-                throw new DbExcepition(e.getMessage());
+              
             }
         }
         return conn;
@@ -38,7 +38,7 @@ public class Db extends AbstractConnection {
                 System.out.println("Banco de Dados desconectado");
             } catch (SQLException e) {
                 System.out.println("Banco de Dados encontrou um problema para desconectar");
-                throw new DbExcepition(e.getMessage());
+               
             }
         }
     }
@@ -52,7 +52,7 @@ public class Db extends AbstractConnection {
             }
         } catch (SQLException e) {
             System.out.println("O ResultSet não conseguiu Desconectar");
-            throw new DbExcepition(e.getMessage());
+           
         }
     }
 
