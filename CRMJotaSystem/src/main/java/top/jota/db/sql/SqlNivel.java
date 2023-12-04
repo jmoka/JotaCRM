@@ -6,12 +6,9 @@ public class SqlNivel implements InterfacesSqlNivel {
 
 	@Override
 	public String SqlInserir_Nivel() {
-
-		return "INSERT INTO Tbl_Nivel " 
-				+ "(nomeNivel) " 
-				+ "VALUES " 
-				+ "(?); ";
+	    return "INSERT INTO Tbl_Nivel (nomeNivel) VALUES (?)";
 	}
+
 
 	@Override
 	public String SqlFindById_Nivel() {

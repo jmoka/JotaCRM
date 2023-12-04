@@ -6,15 +6,15 @@ import java.util.Objects;
 public abstract class AbstractNivel implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	Long idNivel;
-	String nomeNivel;
+	protected Long idNivel;
+	protected String nomeNivel;
 	
 	
 	public AbstractNivel(){		
 	}
 	
 	public AbstractNivel(Long idNivel, String nomeNivel) {
-		super();
+		
 		this.idNivel = idNivel;
 		this.nomeNivel = nomeNivel;
 	}
