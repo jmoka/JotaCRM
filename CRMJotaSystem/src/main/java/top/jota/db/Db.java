@@ -7,13 +7,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 import top.jota.db.abstracts.AbstractConnection;
 import top.jota.db.exception.DbExcepition;
 import top.jota.db.properties.DbProperties;
 
+
+
 public class Db extends AbstractConnection {
 
-    @Override
+	 @Override
     public Connection connection() {
         if (conn == null) {
             Properties props = DbProperties.dbPropretiesMysqlLocal();
@@ -22,6 +27,7 @@ public class Db extends AbstractConnection {
             try {
                 conn = DriverManager.getConnection(url, props);
                 System.out.println("Banco de dados Conectado");
+                
             } catch (SQLException e) {
                 System.err.println("Erro ao conectar ao banco de dados: " + e.getMessage());
               

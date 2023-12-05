@@ -1,8 +1,17 @@
 REPOSITÓRIO GIT
 	- git@github.com:jmoka/JotaCRM.git
 
-
-
+=================================================
+CREATE
+==================================================
+Tbl_Nivel 
+=================================================
+CREATE TABLE Tbl_Nivel (
+  idNivel INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nomeNivel VARCHAR(20) NOT NULL,
+  PRIMARY KEY(idNivel),
+  UNIQUE(nomeNivel)
+);
 =================================================
 INSERTS 
 ================================================
