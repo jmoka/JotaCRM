@@ -4,8 +4,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.springframework.stereotype.Component;
+
 import top.jota.db.exception.DbExcepition;
 
+@Component
 public class DbProperties {
 
 	public static Properties dbPropretiesMysqlLocal() {

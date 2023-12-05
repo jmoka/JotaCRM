@@ -1,7 +1,11 @@
 package top.jota.db.sql;
 
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+
 import top.jota.db.sql.interfacs.InterfacesSqlNivel;
 
+@Component
 public class SqlNivel implements InterfacesSqlNivel {
 
 	@Override

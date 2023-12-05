@@ -10,15 +10,6 @@ public abstract class AbstractNivel implements Serializable{
 	protected String nomeNivel;
 	
 	
-	public AbstractNivel(){		
-	}
-	
-	public AbstractNivel(Long idNivel, String nomeNivel) {
-		
-		this.idNivel = idNivel;
-		this.nomeNivel = nomeNivel;
-	}
-
 	public Long getIdNivel() {
 		return idNivel;
 	}

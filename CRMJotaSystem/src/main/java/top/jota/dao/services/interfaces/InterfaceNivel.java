@@ -4,6 +4,7 @@ import java.util.List;
 
 import top.jota.dao.entities.Nivel;
 
+
 public interface InterfaceNivel {
 
 	List<Nivel> findAll_Nivel();

@@ -17,8 +17,8 @@ public class Main implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Db db = new Db();
-		db.connection();
+		//Db db = new Db();
+		//db.connection();
 		
 	}
 

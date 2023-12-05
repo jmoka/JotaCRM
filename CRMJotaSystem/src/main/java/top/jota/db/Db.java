@@ -7,30 +7,37 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import top.jota.db.abstracts.AbstractConnection;
 import top.jota.db.exception.DbExcepition;
 import top.jota.db.properties.DbProperties;
 
-
-
+@Component
 public class Db extends AbstractConnection {
+	
+	private final DbProperties dbProperties;
 
-	 @Override
+    @Autowired
+    public Db(DbProperties dbProperties) {
+        this.dbProperties = dbProperties;
+    }
+
+	
+    @Override
     public Connection connection() {
         if (conn == null) {
-            Properties props = DbProperties.dbPropretiesMysqlLocal();
+            Properties props = dbProperties.dbPropretiesMysqlLocal();
             String url = props.getProperty("dburl");
 
             try {
                 conn = DriverManager.getConnection(url, props);
                 System.out.println("Banco de dados Conectado");
-                
+
             } catch (SQLException e) {
                 System.err.println("Erro ao conectar ao banco de dados: " + e.getMessage());
-              
+
             }
         }
         return conn;
@@ -44,7 +51,7 @@ public class Db extends AbstractConnection {
                 System.out.println("Banco de Dados desconectado");
             } catch (SQLException e) {
                 System.out.println("Banco de Dados encontrou um problema para desconectar");
-               
+
             }
         }
     }
@@ -58,7 +65,7 @@ public class Db extends AbstractConnection {
             }
         } catch (SQLException e) {
             System.out.println("O ResultSet não conseguiu Desconectar");
-           
+
         }
     }
 

@@ -9,5 +9,6 @@ public class Nivel extends  AbstractNivel{
     public Nivel(String nomeNivel) {		
 		this.nomeNivel = nomeNivel;
 	}
+    
 
 }
