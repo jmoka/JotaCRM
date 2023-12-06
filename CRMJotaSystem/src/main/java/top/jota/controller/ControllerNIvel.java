@@ -17,10 +17,7 @@ import top.jota.dao.services.factorys.FactoryServices;
 
 @Controller
 public class ControllerNIvel implements InterfaceControllerDao{
-	
-	@Autowired
-	@Qualifier("newNivel")
-    private String newNivel;
+
 	
 	@PostMapping("/inserir")	
 	public String inserir(@RequestParam("nameNivel")String nomeNivel, Model model) {	// recebe do formulario o input			
