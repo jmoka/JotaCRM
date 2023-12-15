@@ -12,8 +12,10 @@ import top.jota.db.exception.DbExcepition;
 public class DbProperties {
 
 	public static Properties dbPropretiesMysqlLocal() {
+		
+		String nomeDB = "cpanel";
 
-		try (FileInputStream fs = new FileInputStream("src/main/resources/cpanel.properties")) {
+		try (FileInputStream fs = new FileInputStream("src/main/resources/"+nomeDB+".properties")) {
 		
 			Properties props = new Properties();
 			props.load(fs);

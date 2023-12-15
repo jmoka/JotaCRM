@@ -8,7 +8,14 @@ public class ControllerPages {
 	
 	@GetMapping("/pageCadastroNivel")   
     public String pageCadastroNivel() {
-		return "pageCadastroNivel";
+		System.out.println("teste");
+		return "cadastroNivel";
+		
+	}
+	
+	@GetMapping("/capa")   
+    public String capa() {
+		return "index";
 		
 	}
 
