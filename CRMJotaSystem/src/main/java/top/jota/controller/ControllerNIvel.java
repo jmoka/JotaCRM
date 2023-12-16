@@ -1,21 +1,25 @@
 package top.jota.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import top.jota.controller.inteface.InterfaceControllerDao;
 import top.jota.dao.entities.Nivel;
+import top.jota.dao.services.ServiceNivel;
 import top.jota.dao.services.factorys.FactoryServices;
 
 
 @Controller
 public class ControllerNIvel implements InterfaceControllerDao{
 
+
 	
-	@PostMapping("/inserir")	
-	
+	@PostMapping("/inserir")		
 	public String inserir(@RequestParam("nomeNivel")String nomeNivel, Model model) {	// recebe do formulario o input			
 			
 		System.out.println("nomeNivel  "+ nomeNivel);
@@ -35,12 +39,19 @@ public class ControllerNIvel implements InterfaceControllerDao{
 				
 			}
 			
-			
-			 return "cadastroNivel";
+				
+			 return "redirect:/todosNiveis";
 		
 	}
 	
-	
+	@GetMapping("/todosNiveis")
+	public String todosNiveis(Model model) {
+	    List<Nivel> userList = FactoryServices.FactoryNivel().findAll_Nivel();
+	    
+	    model.addAttribute("userList", userList);
+	    
+	    return "cadastroNivel"; // Substitua "nomeDaSuaView" pelo nome real do seu template de view
+	}
 
 	
 	

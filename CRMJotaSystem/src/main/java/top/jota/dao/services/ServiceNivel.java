@@ -1,9 +1,12 @@
 package top.jota.dao.services;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -21,20 +24,41 @@ public class ServiceNivel implements InterfaceNivel {
 
 	private final Db conn;
 	private final SqlNivel sql;
+	private final Nivel nivel;
 
 	
 	public ServiceNivel(Db conn, SqlNivel sql) {
 		this.conn = conn;
 		this.sql = sql;
+		this.nivel = null;
 	}
 	
 	
 
 	@Override
 	public List<Nivel> findAll_Nivel() {
-		// TODO Auto-generated method stub
-		return null;
+	    List<Nivel> list = new ArrayList<>();
+	    
+	    try (Connection con = conn.connection();
+	         PreparedStatement st = con.prepareStatement(sql.findAll_Nivel());
+	         ResultSet rs = st.executeQuery()) {
+
+	        while (rs.next()) {
+	            Nivel nivel = new Nivel(); // Crie uma nova instância de Nivel
+	            nivel.setIdNivel(rs.getLong("idNivel"));
+	            nivel.setNomeNivel(rs.getString("nomeNivel"));
+	            list.add(nivel);
+	        }
+
+	        return list;
+
+	    } catch (SQLException e) {
+	        System.out.println("Ocorreu algum erro ao buscar a lista");
+	        e.printStackTrace();
+	    }
+	    return null;
 	}
+
 
 	@Override
 	public Nivel findById_Nivel(Long id) {
