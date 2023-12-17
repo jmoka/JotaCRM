@@ -24,35 +24,40 @@ public class ControllerNIvel implements InterfaceControllerDao{
 			
 		System.out.println("nomeNivel  "+ nomeNivel);
 		
-			Nivel objNivel = new Nivel(nomeNivel);
-			Nivel obj = FactoryServices.FactoryNivel().insert_Nivel(objNivel);	
+		Nivel objNivel = new Nivel(nomeNivel);
+		Nivel obj = FactoryServices.FactoryNivel().insert_Nivel(objNivel);	
+		
+	    
+		if(obj.getIdNivel() == null) {
+			
+			model.addAttribute("mensagem", "Erro ao cadastrar nome ja existe = " + nomeNivel);
 			
 			
-			if(obj.getIdNivel() == null) {
-				
-				model.addAttribute("mensagem", "Erro ao cadastrar nome ja existe = " + nomeNivel);
-				
-				
-			}else{
-				
-				model.addAttribute("mensagem", "Nível cadastrado com sucesso: " + nomeNivel);
-				
-			}
 			
-				
-			 return "redirect:/todosNiveis";
+		}else{
+			
+			model.addAttribute("mensagem", "Nível cadastrado com sucesso: " + nomeNivel);
+			
+			
+		}
+		
+			 return "cadastroNivel";
+			
 		
 	}
 	
-	@GetMapping("/todosNiveis")
-	public String todosNiveis(Model model) {
+	@GetMapping("/atualizarListaNivel")
+	public String todosNiveis(Model model) {		
 	    List<Nivel> userList = FactoryServices.FactoryNivel().findAll_Nivel();
-	    
+	        
 	    model.addAttribute("userList", userList);
+	    
 	    
 	    return "cadastroNivel"; // Substitua "nomeDaSuaView" pelo nome real do seu template de view
 	}
 
+	
+	
 	
 	
 }

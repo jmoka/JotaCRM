@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+</head>
+<body>
+	<h1>passagem</h1>
+
+	<script th:inline="javascript">
+		var mensagem = /*[[${mensagem}]]*/ "";
+    console.log("Mensagem recebida:", mensagem);
+    if (mensagem.trim() !== "") {
+        alert(mensagem);
+        window.location.href = '/pageCadastroNivel';  // Altere conforme necessário
+    }
+
+	</script>
+
+	<h1 th:text="${mensagem}"></h1>
+	<h1 th:text="${msg}"></h1>
+	
+</body>
+
+</html>
