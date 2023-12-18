@@ -30,7 +30,7 @@ public class ControllerRelatorioNivel {
 
 	
     @PostMapping("/nivelRelatorioId")
-    public void nivelRelatorioId(@RequestParam("id") Long id) throws JRException {
+    public String nivelRelatorioId(@RequestParam("id") Long id) throws JRException {
         System.out.println("nivelRelatorioId");
 
         DbProperties dbProperties = null;
@@ -42,6 +42,9 @@ public class ControllerRelatorioNivel {
 
         servicie.abrirJasperViewer("relatorios/jrxml/nivelPorID.jrxml", db.connection());
         db.closeConnection();
+      
+        return "redirect:/pageCadastroNivel";
+        
     }
 	
 	@GetMapping("/nivelRelatorioNome")   
@@ -49,5 +52,9 @@ public class ControllerRelatorioNivel {
 		System.out.println("nivelRelatorioNome");
 		
 	}
+	
+	
+	
+	
 
 }

@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.swing.*;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -15,151 +16,86 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ServiceJasperViewer {
 
-	
-	
-	
-	public ServiceJasperViewer() {
-		initializeGraphicsEnvironment();
-	}
+    private Map<String, Object> params = new LinkedHashMap<>();
 
+    public ServiceJasperViewer() {
+        initializeGraphicsEnvironment();
+    }
 
-	// Terá métodos para a geração dos relatorios
-	// Variável de Instancia, MAP, chave tipo string e valor object.
-	// servirá para incluir parametros nos relatório
+    private JasperReport compileJrxml(String path) {
+        try {
+            InputStream is = getClass().getClassLoader().getResourceAsStream(path);
+            return JasperCompileManager.compileReport(is);
+        } catch (JRException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
-	private Map<String, Object> params = new LinkedHashMap<>();
+    public void addParams(String key, Object obj) {
+        this.params.put(key, obj);
+    }
 
-	
-	
-	
-	// possui duas maneiras utilizando o arquivo compilado (.jasper) e o não
-	// compilado (.jrxml)
+    private static void initializeGraphicsEnvironment() {
+        System.setProperty("java.awt.headless", "false");
+    }
 
-	// Método para Trabalhar com arquivos .jrxml não compilado
-	// Necessário criar um método que faça a compilação
+    public void abrirJasperViewer(String jrxml, Connection connection) throws JRException {
+        JasperReport report = compileJrxml(jrxml);
 
-	// O método vai retornar um arquivo do tipo JasperReport
-	// Vai receber como parametro o caminho e o nome do arquivo
-	
-	
-	
-	private JasperReport compilandoJrxml(String caminho) {
+        try {
+            if (GraphicsEnvironment.isHeadless()) {
+                throw new RuntimeException("O ambiente é headless. Não é possível exibir a interface gráfica.");
+            }
 
-		// O retorno ira trabalhar com a parte de compilação e realizar a compilação
-		try {
-			// Para ter acesso ao arquivo temos que ter uma instrução para retornar um
-			// InputStream
-			// O arquivo tem que esta dentro de resource
-			InputStream is = getClass().getClassLoader().getResourceAsStream(caminho);
+            JasperPrint print = JasperFillManager.fillReport(report, params, connection);
+            JasperViewer viewer = new JasperViewer(print, false); // false indica que o fechamento não deve encerrar o aplicativo
+            viewer.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            viewer.setVisible(true);
+            System.out.println("Relatório Gerado com Sucesso!!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-			return JasperCompileManager.compileReport(is);
-		} catch (JRException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	};
-	
-	
-	
-	
-	
+    public void exportarPDF(String jrxml, Connection connection, String saida) throws JRException {
+        JasperReport report = compileJrxml(jrxml);
 
-	// Responsavel por adicionar os paramentros na variavel params
-	// sempre que form preciso adicionar um parametro nos relatorios esse metodo
-	// sera usado
-	
-	public void addParams(String kay, Object obj) {
-		this.params.put(kay, obj);
+        try {
+            OutputStream out = new FileOutputStream(saida);
 
-	}
-	
-	
-	
-	
-	
+            if (GraphicsEnvironment.isHeadless()) {
+                throw new RuntimeException("O ambiente é headless. Não é possível exibir a interface gráfica.");
+            }
 
-	// Método que inicializa o ambiente gráfico. Chame este método no início do seu programa.
-	
-	
-	private static void initializeGraphicsEnvironment() {
-		System.setProperty("java.awt.headless", "false");
-	}
-	
-	
-	
-	
-	
+            JasperPrint print = JasperFillManager.fillReport(report, params, connection);
+            JasperExportManager.exportReportToPdfStream(print, out);
+            System.out.println("Relatório Gerado com Sucesso!!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	// criar métodop para abrir o relatório
-	
-	public void abrirJasperViewer(String jrxml, Connection connection) throws JRException {
+    public void exportarHTML(String jrxml, Connection connection, String saida) throws JRException {
+        JasperReport report = compileJrxml(jrxml);
 
-		JasperReport report = compilandoJrxml(jrxml);
+        try {
+            OutputStream out = new FileOutputStream(saida);
 
-		try {
-			if (GraphicsEnvironment.isHeadless()) {
-				throw new RuntimeException("O ambiente é headless. Não é possível exibir a interface gráfica.");
-			}
+            if (GraphicsEnvironment.isHeadless()) {
+                throw new RuntimeException("O ambiente é headless. Não é possível exibir a interface gráfica.");
+            }
 
-			JasperPrint print = JasperFillManager.fillReport(report, params, connection);
-			JasperViewer viewer = new JasperViewer(print);
-			viewer.setVisible(true);
-			System.out.println("Relatório Gerado com Sucesso!!");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	};
-	
-	public void exportarPDF(String jrxml, Connection connection, String saida) throws JRException {
-
-		JasperReport report = compilandoJrxml(jrxml);
-
-		try {
-			OutputStream out = new FileOutputStream(saida);
-			
-			if (GraphicsEnvironment.isHeadless()) {
-				throw new RuntimeException("O ambiente é headless. Não é possível exibir a interface gráfica.");
-			}
-
-			JasperPrint print = JasperFillManager.fillReport(report, params, connection);
-			
-			
-			JasperExportManager.exportReportToPdfStream(print, out);
-			System.out.println("Relatório Gerado com Sucesso!!");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-		
-		public void exportarHTML(String jrxml, Connection connection, String saida) throws JRException {
-
-			JasperReport report = compilandoJrxml(jrxml);
-
-			try {
-				OutputStream out = new FileOutputStream(saida);
-				
-				if (GraphicsEnvironment.isHeadless()) {
-					throw new RuntimeException("O ambiente é headless. Não é possível exibir a interface gráfica.");
-				}
-
-				JasperPrint print = JasperFillManager.fillReport(report, params, connection);
-				
-				JasperExportManager.exportReportToHtmlFile(print, saida);
-				
-				System.out.println("Relatório Gerado com Sucesso!!");
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-	};
-
-	
-	
-	
+            JasperPrint print = JasperFillManager.fillReport(report, params, connection);
+            JasperExportManager.exportReportToHtmlFile(print, saida);
+            System.out.println("Relatório Gerado com Sucesso!!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
