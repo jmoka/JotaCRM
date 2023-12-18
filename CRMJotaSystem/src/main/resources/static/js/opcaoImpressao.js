@@ -11,7 +11,7 @@ function gerarRelatorioNivel() {
 
 	if (opcaoConsulta == "1" && opcaoImpressao == "2") {
 		console.log("1 2 ");
-		window.location.href = "/relatorioNivelTodos";
+		window.location.href = "/relatorioNivelTodosPDF";
 		
 	}
 

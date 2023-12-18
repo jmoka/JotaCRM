@@ -8,14 +8,14 @@ public class ControllerPages {
 	
 	@GetMapping("/pageCadastroNivel")   
     public String pageCadastroNivel() {
-		System.out.println("teste");
+		
 		return "cadastroNivel";
 		
 	}
 	
-	@GetMapping("/capa")   
-    public String capa() {
-		return "index";
+	@GetMapping("/atualizarDiretorioRelatorio")   
+    public String atualizarDiretorioRelatorio() {
+		return "atualizarDiretorioRelatorio";
 		
 	}
 
