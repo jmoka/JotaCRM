@@ -8,7 +8,12 @@ import java.sql.Connection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.swing.*;
+import javax.swing.WindowConstants;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -16,7 +21,6 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
-import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceJasperViewer {
@@ -45,7 +49,7 @@ public class ServiceJasperViewer {
         System.setProperty("java.awt.headless", "false");
     }
 
-    public void abrirJasperViewer(String jrxml, Connection connection) throws JRException {
+    public JasperPrint abrirJasperViewer(String jrxml, Connection connection) throws JRException {
         JasperReport report = compileJrxml(jrxml);
 
         try {
@@ -58,9 +62,11 @@ public class ServiceJasperViewer {
             viewer.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             viewer.setVisible(true);
             System.out.println("Relatório Gerado com Sucesso!!");
+            return print;
         } catch (Exception e) {
             e.printStackTrace();
         }
+		return null;
     }
 
     public void exportarPDF(String jrxml, Connection connection, String saida) throws JRException {
@@ -98,4 +104,16 @@ public class ServiceJasperViewer {
             e.printStackTrace();
         }
     }
+    
+    public ModelAndView redirecionar () {
+    	// Cria um objeto RedirectView que aponta para a URL desejada
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/atualizarListaNivel");
+
+        // Retorna o ModelAndView com a RedirectView
+        ModelAndView modelAndView = new ModelAndView(redirectView);
+        return modelAndView;
+    }
+   
+    
 }

@@ -12,6 +12,7 @@ function gerarRelatorioNivel() {
 	if (opcaoConsulta == "1" && opcaoImpressao == "2") {
 		console.log("1 2 ");
 		window.location.href = "/relatorioNivelTodos";
+		
 	}
 
 	if (opcaoConsulta == "1" && opcaoImpressao == "3") {
@@ -30,6 +31,7 @@ function gerarRelatorioNivel() {
     // Exibe o modal
     const bootstrapModal = new bootstrap.Modal(myModal);
     bootstrapModal.show();
+    
 
 	}
 
