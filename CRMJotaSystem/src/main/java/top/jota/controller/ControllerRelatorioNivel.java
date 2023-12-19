@@ -25,9 +25,9 @@ import top.jota.db.properties.DbProperties;
 		// TODOS NIVEIS
 		
 			// TELA TODOS NIVEIS
-	    @GetMapping("/relatorioNivelTodosTela")
-	    public ModelAndView relatorioNivelTodosTela() throws JRException {
-	    	System.out.println("nivelRelatorio");
+	    @GetMapping("/relatorioNivelTodosTelaNome")
+	    public ModelAndView relatorioNivelTodosTelaNome() throws JRException {
+	    	System.out.println("nivelRelatorioNnome");
 	    	
 	    	 DbProperties dbProperties = null;
 			 Db db = new Db(dbProperties);		
@@ -36,6 +36,30 @@ import top.jota.db.properties.DbProperties;
 			 try {
 				 ServiceJasperViewer service = new ServiceJasperViewer();	
 				 String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
+				 
+				 service.abrirJasperViewer(jrxml,  db.connection());
+				 
+				  return service.redirecionar();
+			 }catch (Exception e) {
+				 e.printStackTrace();
+		           
+			}
+			return null;
+			 
+	    }
+	    
+	    
+	    @GetMapping("/relatorioNivelTodosTelaPorId")
+	    public ModelAndView relatorioNivelTodosTelaPorId() throws JRException {
+	    	System.out.println("nivelRelatorioID");
+	    	
+	    	 DbProperties dbProperties = null;
+			 Db db = new Db(dbProperties);		
+			
+			 
+			 try {
+				 ServiceJasperViewer service = new ServiceJasperViewer();	
+				 String jrxml = "relatorios/jrxml/nivelTodosOrderID.jrxml";
 				 
 				 service.abrirJasperViewer(jrxml,  db.connection());
 				 

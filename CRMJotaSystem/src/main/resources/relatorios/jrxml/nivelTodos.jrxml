@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nivelTodos.jrxml" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="01b08e2b-0a34-4255-bd14-a3e61f9a34d3">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nivelTodos.jrxml" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="01b08e2b-0a34-4255-bd14-a3e61f9a34d3">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cpanel"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<style name="Style1" mode="Opaque" backcolor="#FFFFFF">
@@ -18,8 +18,7 @@
 	<queryString>
 		<![CDATA[SELECT n.idNivel, n.nomeNivel
 FROM Tbl_Nivel n
-
-]]>
+ORDER BY n.nomeNivel]]>
 	</queryString>
 	<field name="idNivel" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="idNivel"/>
@@ -73,6 +72,10 @@ FROM Tbl_Nivel n
 				</textElement>
 				<text><![CDATA[Relatório dos Níveis dos Usuários]]></text>
 			</staticText>
+			<image>
+				<reportElement x="30" y="4" width="50" height="50" uuid="539bc667-4ecf-4a26-bca1-18b4b53bb1bf"/>
+				<imageExpression><![CDATA["static/img/logoIco.png"]]></imageExpression>
+			</image>
 		</band>
 	</pageHeader>
 	<columnHeader>

@@ -72,6 +72,10 @@ ORDER BY n.idNivel]]>
 				</textElement>
 				<text><![CDATA[Relatório dos Níveis dos Usuários]]></text>
 			</staticText>
+			<image>
+				<reportElement x="30" y="4" width="50" height="50" uuid="6cc11b00-8100-4ad0-84c6-dc4f297c6591"/>
+				<imageExpression><![CDATA["static/img/logoIco.png"]]></imageExpression>
+			</image>
 		</band>
 	</pageHeader>
 	<columnHeader>
