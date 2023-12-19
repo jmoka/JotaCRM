@@ -18,6 +18,8 @@ import top.jota.db.properties.DbProperties;
 public class Db extends AbstractConnection {
 	
 	private final DbProperties dbProperties;
+	
+	
 
     @Autowired
     public Db(DbProperties dbProperties) {

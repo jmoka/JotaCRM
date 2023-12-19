@@ -17,7 +17,9 @@ import top.jota.db.properties.DbProperties;
 	
 	
 	@RestController
-	public class ControllerRelatorioNivel {
+	public class ControllerRelatorioNivel {	
+		
+
 		
 				
 		// TODOS NIVEIS
@@ -85,14 +87,59 @@ import top.jota.db.properties.DbProperties;
 			return null;
 			
 	    }
+	    
+		
+	    @GetMapping("/relatorioNivelTodosHTML")
+	    public ModelAndView relatorioNivelTodosHTML() throws JRException {
 
-	    
-	    
-	    @PostMapping("/atualizarDiretorioExportacaoRelatorio")
-	    public void atualizarDiretorioExportacaoRelatorio(@RequestParam("caminho")  String caminho) throws JRException {
+	    		System.out.println("relatorioNivelTodosHTML 999999999999999999999999999999999999999999999999999");
 	    	
 	    		
-	    	    
+	    		
+	    		DbProperties dbProperties = new DbProperties(); 
+		        Db db = new Db(dbProperties);
+		       
+
+		        Properties props = dbProperties.obterProperties();
+
+		        // Gere uma UUID
+		        UUID extencao = UUID.randomUUID();
+		       
+
+		        // Obtenha o caminho de saída do arquivo do properties
+		        String caminhoSaida = props.getProperty("caminhoSaida");
+
+		        // Gere o nome do arquivo com a extensão ".pdf"
+		        String nomeArquivo = "\\relatorio-"+extencao + ".html";
+
+		        // Concatene o caminho de saída com o nome do arquivo
+		        String caminhoCompleto = caminhoSaida + nomeArquivo;
+
+		    
+		       
+		        
+		        try {
+		        	 String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
+		        	 ServiceJasperViewer service = new ServiceJasperViewer();
+		        	 service.exportarHTML(jrxml, db.connection(), caminhoCompleto);
+			         db.closeConnection();
+			         return service.redirecionar();
+		        	
+		        }catch (Exception e) {
+		        	 e.printStackTrace();
+		        }
+		        
+				return null;
+				
+	    }
+	    
+	    
+		    
+	    
+	    @PostMapping("/atualizarDiretorioExportacaoRelatorio")
+	    public ModelAndView atualizarDiretorioExportacaoRelatorio(@RequestParam("caminho")  String caminho) throws JRException {
+	    	
+	    			    	    
 	    	if(caminho != null) {
 	    		Connection conection = null;
 	    		DbProperties dbProperties = null;
@@ -112,14 +159,14 @@ import top.jota.db.properties.DbProperties;
 	    	}else {
 	    		System.out.println("erro");
 	    	}
+	    	 
+	    	ServiceJasperViewer service = new ServiceJasperViewer();
+			return service.redirecionar();
 	    		
-	    		 
-			        
-	    		 
+	       		 
 	    	 }
 
-		        
-	 
+		        	 
 	    
 	
 	    @PostMapping("/nivelRelatorioId")

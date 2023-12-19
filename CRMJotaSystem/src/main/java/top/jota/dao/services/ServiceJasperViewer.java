@@ -35,14 +35,14 @@ public class ServiceJasperViewer {
         initializeGraphicsEnvironment();
     }
 
-    private JasperReport compileJrxml(String path) {
+    private JasperReport compilandoJrxml(String caminho) {
         try {
-            InputStream is = getClass().getClassLoader().getResourceAsStream(path);
+            InputStream is = getClass().getClassLoader().getResourceAsStream(caminho);
             return JasperCompileManager.compileReport(is);
         } catch (JRException e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
     public void addParams(String key, Object obj) {
@@ -54,7 +54,7 @@ public class ServiceJasperViewer {
     }
 
     public JasperPrint abrirJasperViewer(String jrxml, Connection connection) throws JRException {
-        JasperReport report = compileJrxml(jrxml);
+        JasperReport report = compilandoJrxml(jrxml);
 
         try {
             if (GraphicsEnvironment.isHeadless()) {
@@ -74,7 +74,7 @@ public class ServiceJasperViewer {
     }
 
     public void exportarPDF(String jrxml, Connection connection, String saida) throws JRException {
-        JasperReport report = compileJrxml(jrxml);
+        JasperReport report = compilandoJrxml(jrxml);
 
         try {
             OutputStream out = new FileOutputStream(saida);
@@ -92,22 +92,26 @@ public class ServiceJasperViewer {
     }
 
     public void exportarHTML(String jrxml, Connection connection, String saida) throws JRException {
-        JasperReport report = compileJrxml(jrxml);
+        JasperReport report = compilandoJrxml(jrxml);
 
         try {
-            OutputStream out = new FileOutputStream(saida);
+			OutputStream out = new FileOutputStream(saida);
+			
+			if (GraphicsEnvironment.isHeadless()) {
+				throw new RuntimeException("O ambiente é headless. Não é possível exibir a interface gráfica.");
+			}
 
-            if (GraphicsEnvironment.isHeadless()) {
-                throw new RuntimeException("O ambiente é headless. Não é possível exibir a interface gráfica.");
-            }
+			JasperPrint print = JasperFillManager.fillReport(report, params, connection);
+			
+			JasperExportManager.exportReportToHtmlFile(print, saida);
+			
+			System.out.println("Relatório Gerado com Sucesso!!");
 
-            JasperPrint print = JasperFillManager.fillReport(report, params, connection);
-            JasperExportManager.exportReportToHtmlFile(print, saida);
-            System.out.println("Relatório Gerado com Sucesso!!");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
+    
     
     public ModelAndView redirecionar () {
     	// Cria um objeto RedirectView que aponta para a URL desejada
