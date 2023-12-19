@@ -5,23 +5,23 @@ function gerarRelatorioNivel() {
 
 	if (opcaoConsulta == "1" && opcaoImpressao == "1") {
 		console.log("1 1 ");
-		window.location.href = "/relatorioNivelTodos";
+		window.location.href = "/relatorioNivelTodosTela";
 
 	}
 
 	if (opcaoConsulta == "1" && opcaoImpressao == "2") {
-		console.log("1 2 ");
+		console.log("1 2");
 		window.location.href = "/relatorioNivelTodosPDF";
 		
 	}
 
 	if (opcaoConsulta == "1" && opcaoImpressao == "3") {
-		console.log("1 3 ");
+		console.log("1 3");
 	}
 
 
 	if (opcaoConsulta == "2" && opcaoImpressao == "1") {
-		console.log("2 1 ");
+		console.log("2 1");
 
 
     // Seleciona o modal e atribui o ID

@@ -24,25 +24,35 @@ import top.jota.db.properties.DbProperties;
 		
 			// TELA TODOS NIVEIS
 	    @GetMapping("/relatorioNivelTodosTela")
-	    public void relatorioNivelTodosTela() throws JRException {
+	    public ModelAndView relatorioNivelTodosTela() throws JRException {
 	    	System.out.println("nivelRelatorio");
 	    	
 	    	 DbProperties dbProperties = null;
 			 Db db = new Db(dbProperties);		
-			 ServiceJasperViewer servicie = new ServiceJasperViewer();	 
-			 String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
+			
 			 
-			 servicie.abrirJasperViewer(jrxml,  db.connection());
-			 db.closeConnection();
+			 try {
+				 ServiceJasperViewer service = new ServiceJasperViewer();	
+				 String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
+				 
+				 service.abrirJasperViewer(jrxml,  db.connection());
+				 
+				  return service.redirecionar();
+			 }catch (Exception e) {
+				 e.printStackTrace();
+		           
+			}
+			return null;
+			 
 	    }
 	    
 	    @GetMapping("/relatorioNivelTodosPDF")
-	    public void relatorioNivelTodosPDF() throws JRException {
+	    public ModelAndView relatorioNivelTodosPDF() throws JRException {
 	       
 
 	        DbProperties dbProperties = null;
 	        Db db = new Db(dbProperties);
-	        ServiceJasperViewer service = new ServiceJasperViewer();
+	       
 
 	        Properties props = dbProperties.obterProperties();
 
@@ -62,14 +72,21 @@ import top.jota.db.properties.DbProperties;
 	        System.out.println("Caminho completo do arquivo: " + caminhoCompleto);
 
 	        String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
-
+	        
 	        try {
-	            service.exportarPDF(jrxml, db.connection(), caminhoCompleto);
-	            db.closeConnection();
-	        } catch (JRException e) {
-	            e.printStackTrace();
+	        	 ServiceJasperViewer service = new ServiceJasperViewer();
+	        	 service.exportarPDF(jrxml, db.connection(), caminhoCompleto);
+		         db.closeConnection();
+		         return service.redirecionar();
+	        	
+	        }catch (Exception e) {
+	        	 e.printStackTrace();
 	        }
+			return null;
+			
 	    }
+
+	    
 	    
 	    @PostMapping("/atualizarDiretorioExportacaoRelatorio")
 	    public void atualizarDiretorioExportacaoRelatorio(@RequestParam("caminho")  String caminho) throws JRException {

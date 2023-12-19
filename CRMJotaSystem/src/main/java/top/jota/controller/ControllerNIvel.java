@@ -47,7 +47,7 @@ public class ControllerNIvel implements InterfaceControllerDao{
 	}
 	
 	@GetMapping("/atualizarListaNivel")
-	public String todosNiveis(Model model) {		
+	public String atualizarListaNivel(Model model) {		
 	    List<Nivel> userList = FactoryServices.FactoryNivel().findAll_Nivel();
 	        
 	    model.addAttribute("userList", userList);
