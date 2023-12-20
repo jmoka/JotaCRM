@@ -31,7 +31,7 @@ function gerarRelatorioNivel() {
 		
 	}
 	
-	// ORDENADO POR NOME
+			// ORDENADO POR NOME
 	if (opcaoConsulta == "1" && opcaoImpressao == "2" && opcaoOrdem == "2") {
 		console.log("1 2 2");
 		window.location.href = "/relatorioNivelTodosPDFPorNome";		
@@ -47,7 +47,7 @@ function gerarRelatorioNivel() {
 		
 	}
 	
-			
+			// ORDENADO POR NOME
 	if (opcaoConsulta == "1" && opcaoImpressao == "3" && opcaoOrdem == "2" ) {
 		console.log("1 3 2");
 		window.location.href = "/relatorioNivelTodosHTMLNome";		
@@ -55,20 +55,21 @@ function gerarRelatorioNivel() {
 	}
 
 
+
+
 	if (opcaoConsulta == "2" && opcaoImpressao == "1") {
 		console.log("2 1");
 
+    	// Seleciona o modal e atribui o ID
+    		const myModal = document.getElementById('myModal');
+    		myModal.setAttribute('data-idNivel', idNivel);
 
-    // Seleciona o modal e atribui o ID
-    const myModal = document.getElementById('myModal');
-    myModal.setAttribute('data-idNivel', idNivel);
-
-    // Exibe o modal
-    const bootstrapModal = new bootstrap.Modal(myModal);
-    bootstrapModal.show();
-    
-
-	}
+    	// Exibe o modal
+    		const bootstrapModal = new bootstrap.Modal(myModal);
+    		bootstrapModal.show();
+    }
+	
+	
 
 	if (opcaoConsulta == "2" && opcaoImpressao == "2") {
 		console.log("2 2 ");
