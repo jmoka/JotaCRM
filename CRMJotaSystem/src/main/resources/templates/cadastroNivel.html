@@ -240,8 +240,8 @@
 
 
 
-	<!--MODAL ID -->
-	<div class="modal" tabindex="-1" id="myModal" data-idNivel="">
+	<!--MODAL ID nivelRelatorioIdTela -->
+	<div class="modal" tabindex="-1" id="nivelRelatorioIdTela" data-idNivel="">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -250,7 +250,56 @@
 				</div>
 				<div class="modal-body">
 
-					<form th:action="@{/nivelRelatorioId}" method="post" class="d-flex mt-3" role="search">
+					<form th:action="@{/nivelRelatorioIdTela}" method="post" class="d-flex mt-3" role="search">
+						<input name="id" id="idNivelRelatorio" class="form-control me-2" type="search"
+							aria-label="Search" placeholder="Informe o Id do Nível">
+						<button class="btn btn-success" type="submit">Consultar</button>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--MODAL ID nivelRelatorioIdPDF -->
+	<div class="modal" tabindex="-1" id="nivelRelatorioIdPDF" data-idNivel="">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Digite o Id do Nível</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<form th:action="@{/nivelRelatorioIdPDF}" method="post" class="d-flex mt-3" role="search">
+						<input name="id" id="idNivelRelatorio" class="form-control me-2" type="search"
+							aria-label="Search" placeholder="Informe o Id do Nível">
+						<button class="btn btn-success" type="submit">Consultar</button>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!--MODAL ID nivelRelatorioIdHTML -->
+	<div class="modal" tabindex="-1" id="nivelRelatorioIdHTML" data-idNivel="">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Digite o Id do Nível</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<form th:action="@{/nivelRelatorioIdHTML}" method="post" class="d-flex mt-3" role="search">
 						<input name="id" id="idNivelRelatorio" class="form-control me-2" type="search"
 							aria-label="Search" placeholder="Informe o Id do Nível">
 						<button class="btn btn-success" type="submit">Consultar</button>

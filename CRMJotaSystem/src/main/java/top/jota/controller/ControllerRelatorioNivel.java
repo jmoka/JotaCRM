@@ -299,7 +299,8 @@ import top.jota.db.properties.DbProperties;
 		        	 
 	    // RELATÓRIO POR ID
 	
-	    @PostMapping("/nivelRelatorioId")
+	    	// TELA
+	    @PostMapping("/nivelRelatorioIdTela")
 	    public ModelAndView nivelRelatorioId(@RequestParam("id") Long id) {
 	        System.out.println("nivelRelatorioId");
 	
@@ -323,6 +324,98 @@ import top.jota.db.properties.DbProperties;
 	    
 	  		
 		
-		
+		// PDF
+	    @PostMapping("/nivelRelatorioIdPDF")
+	    public ModelAndView nivelRelatorioIdPDF(@RequestParam("id") Long id) {
+	        DbProperties dbProperties = new DbProperties(); // Corrigir a criação do objeto DbProperties
+	        Db db = new Db(dbProperties);
+
+	        try {
+	            Properties props = dbProperties.obterProperties();
+
+	            // Gere uma UUID
+	            UUID extensao = UUID.randomUUID();
+
+	            // Obtenha o caminho de saída do arquivo do properties
+	            String caminhoSaida = props.getProperty("caminhoSaida");
+
+	            // Gere o nome do arquivo com a extensão ".pdf"
+	            String nomeArquivo = "\\relatorio-" + extensao + ".pdf";
+
+	            // Concatene o caminho de saída com o nome do arquivo
+	            String caminhoCompleto = caminhoSaida + nomeArquivo;
+
+	            System.out.println("Caminho completo do arquivo: " + caminhoCompleto);
+
+	            String jrxml = "relatorios/jrxml/nivelPorID.jrxml";
+
+	            ServiceJasperViewer service = new ServiceJasperViewer();
+
+	            // Adiciona parâmetros antes de exportar o PDF
+	            service.addParams("idNivel", id);
+
+	            // Abra um FileOutputStream
+	            try (FileOutputStream outputStream = new FileOutputStream(caminhoCompleto)) {
+	                service.exportarPDFcloseOutputStream(jrxml, db.connection(), outputStream);
+	            }
+
+	            // Redirecionar para a visualização do relatório
+	            return service.redirecionar();
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	            db.closeConnection();
+	        }
+
+	        return null;
+	    }
+	    
+	    
+	    // HTML
+	    @PostMapping("/nivelRelatorioIdHTML")
+	    public ModelAndView nivelRelatorioIdHTML(@RequestParam("id") Long id) {
+	    	DbProperties dbProperties = new DbProperties(); 
+	        Db db = new Db(dbProperties);
+	       
+
+	        Properties props = dbProperties.obterProperties();
+
+	        // Gere uma UUID
+	        UUID extencao = UUID.randomUUID();
+	       
+
+	        // Obtenha o caminho de saída do arquivo do properties
+	        String caminhoSaida = props.getProperty("caminhoSaida");
+
+	        // Gere o nome do arquivo com a extensão ".pdf"
+	        String nomeArquivo = "\\relatorio-"+extencao + ".html";
+
+	        // Concatene o caminho de saída com o nome do arquivo
+	        String caminhoCompleto = caminhoSaida + nomeArquivo;
+
+	    
+	       
+	        
+	        try {
+	        	 String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
+	        	 ServiceJasperViewer service = new ServiceJasperViewer();
+	        	 service.exportarHTML(jrxml, db.connection(), caminhoCompleto);
+	        	// Adiciona parâmetros antes de exportar o PDF
+		            service.addParams("idNivel", id);
+	        	 db.closeConnection();
+	        	 
+	        	 	 
+		         return service.redirecionar();
+	        	
+	        }catch (Exception e) {
+	        	 e.printStackTrace();
+	        }
+	        db.closeConnection();
+	        
+			return null;
+			
+    }
+
 	
 	}
