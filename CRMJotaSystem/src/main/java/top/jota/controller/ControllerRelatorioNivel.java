@@ -23,11 +23,11 @@ import top.jota.db.properties.DbProperties;
 
 		
 				
-		// TODOS NIVEIS
+		// TELA
 		
-			// TELA TODOS NIVEIS
-	    @GetMapping("/relatorioNivelTodosTela")
-	    public ModelAndView relatorioNivelTodosTela() throws JRException {
+			// TELA TODOS NIVEIS ID
+	    @GetMapping("/relatorioNivelTodosTelaPorId")
+	    public ModelAndView relatorioNivelTodosTelaPorId() throws JRException {
 	    	System.out.println("nivelRelatorio");
 	    	
 	    	 DbProperties dbProperties = null;
@@ -36,7 +36,7 @@ import top.jota.db.properties.DbProperties;
 			 
 			 try {
 				 ServiceJasperViewer service = new ServiceJasperViewer();	
-				 String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
+				 String jrxml = "relatorios/jrxml/nivelTodosOrderID.jrxml";
 				 
 				 service.abrirJasperViewer(jrxml,  db.connection());
 				 db.closeConnection();
@@ -50,6 +50,42 @@ import top.jota.db.properties.DbProperties;
 			 
 	    }
 	    
+	
+		
+	 			// TELA TODOS NIVEIS NOME
+	 	    @GetMapping("/relatorioNivelTodosTelaNome")
+	 	    public ModelAndView relatorioNivelTodosTelaNome() throws JRException {
+	 	    	System.out.println("nivelRelatorio");
+	 	    	
+	 	    	 DbProperties dbProperties = null;
+	 			 Db db = new Db(dbProperties);		
+	 			
+	 			 
+	 			 try {
+	 				 ServiceJasperViewer service = new ServiceJasperViewer();	
+	 				 String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
+	 				 
+	 				 service.abrirJasperViewer(jrxml,  db.connection());
+	 				 db.closeConnection();
+	 				  return service.redirecionar();
+	 			 }catch (Exception e) {
+	 				 e.printStackTrace();
+	 		           
+	 			}
+	 			 db.closeConnection();
+	 			return null;
+	 			 
+	 	    }
+	 	    
+	 	    
+	    
+	 	    
+	 	    // PDF
+	 	    
+	 	    
+	 	// PDF TODOS NIVEIS ID
+	 	    
+	 	    
 	    @GetMapping("/relatorioNivelTodosPDFPorID")
 	    public ModelAndView relatorioNivelTodosPDFPorID() throws JRException, IOException {
 	        DbProperties dbProperties = null;
@@ -92,7 +128,9 @@ import top.jota.db.properties.DbProperties;
 	        return null;
 	    }
 
-
+	    
+	 // PDF TODOS NIVEIS NOME
+	    
 	    @GetMapping("/relatorioNivelTodosPDFPorNome")
 	    public ModelAndView relatorioNivelTodosPDFPorNome() throws JRException, IOException {
 	        DbProperties dbProperties = null;
@@ -136,7 +174,9 @@ import top.jota.db.properties.DbProperties;
 	        return null;
 	    }
 	    
+	    // HTML
 	    
+	    	// HTML TODOS NIVEIS ID
 	    
 	    @GetMapping("/relatorioNivelTodosHTMLID")
 	    public ModelAndView relatorioNivelTodosHTMLID() throws JRException {
@@ -180,7 +220,8 @@ import top.jota.db.properties.DbProperties;
 	    }
 	    
 	    
-		
+	 // HTML TODOS NIVEIS NOME
+	    
 	    @GetMapping("/relatorioNivelTodosHTMLNome")
 	    public ModelAndView relatorioNivelTodosHTML() throws JRException {
 	    		
@@ -223,7 +264,7 @@ import top.jota.db.properties.DbProperties;
 	    }
 	    
 	    
-		    
+		    // ATUALIZAR E REDIRECIONAR
 	    
 	    @PostMapping("/atualizarDiretorioExportacaoRelatorio")
 	    public ModelAndView atualizarDiretorioExportacaoRelatorio(@RequestParam("caminho")  String caminho) throws JRException {
@@ -256,7 +297,7 @@ import top.jota.db.properties.DbProperties;
 	    	 }
 
 		        	 
-	    
+	    // RELATÓRIO POR ID
 	
 	    @PostMapping("/nivelRelatorioId")
 	    public ModelAndView nivelRelatorioId(@RequestParam("id") Long id) {

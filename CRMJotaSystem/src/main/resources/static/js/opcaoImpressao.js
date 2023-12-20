@@ -25,8 +25,8 @@ function gerarRelatorioNivel() {
 	
 	// NIVEL TODOS PDF
 			// ORDENADO POR ID
-	if (opcaoConsulta == "1" && opcaoImpressao == "1" && opcaoOrdem == "2") {
-		console.log("1 1 2");
+	if (opcaoConsulta == "1" &&  opcaoImpressao == "2" && opcaoOrdem == "1"  ) {
+		console.log("1 2 1");
 		window.location.href = "/relatorioNivelTodosPDFPorID";
 		
 	}
