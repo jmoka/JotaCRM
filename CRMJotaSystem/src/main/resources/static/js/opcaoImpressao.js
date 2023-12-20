@@ -10,34 +10,47 @@ function gerarRelatorioNivel() {
 	console.log(opcaoOrdem);
 	
 	
-
+	// NIVEL TODOS TELA
+			// ORDENADO POR ID
 	if (opcaoConsulta == "1" && opcaoImpressao == "1" && opcaoOrdem == "1") {
 		console.log("1 1 1 ");
 		window.location.href = "/relatorioNivelTodosTelaPorId";
-
-	}
-	
-	
+	}	
+			// ORDENADO POR NOME
 	if (opcaoConsulta == "1" && opcaoImpressao == "1" && opcaoOrdem == "2") {
 		console.log("1 1 2 ");
 		window.location.href = "/relatorioNivelTodosTelaNome";
-
 	}
 	
 	
+	// NIVEL TODOS PDF
+			// ORDENADO POR ID
+	if (opcaoConsulta == "1" && opcaoImpressao == "1" && opcaoOrdem == "2") {
+		console.log("1 1 2");
+		window.location.href = "/relatorioNivelTodosPDFPorID";
+		
+	}
 	
-	
-
+	// ORDENADO POR NOME
 	if (opcaoConsulta == "1" && opcaoImpressao == "2" && opcaoOrdem == "2") {
-		console.log("1 2");
-		window.location.href = "/relatorioNivelTodosPDF";
+		console.log("1 2 2");
+		window.location.href = "/relatorioNivelTodosPDFPorNome";		
+	}
+	
+	
+	// NIVEL TODOS HTML
+			// ORDENADO POR ID
+			
+	if (opcaoConsulta == "1" && opcaoImpressao == "3" && opcaoOrdem == "1" ) {
+		console.log("1 3 1");
+		window.location.href = "/relatorioNivelTodosHTMLID";		
 		
 	}
-
+	
+			
 	if (opcaoConsulta == "1" && opcaoImpressao == "3" && opcaoOrdem == "2" ) {
-		console.log("1 3");
-		window.location.href = "/relatorioNivelTodosHTML";
-		
+		console.log("1 3 2");
+		window.location.href = "/relatorioNivelTodosHTMLNome";		
 		
 	}
 

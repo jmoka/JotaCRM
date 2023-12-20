@@ -90,6 +90,33 @@ public class ServiceJasperViewer {
             e.printStackTrace();
         }
     }
+    
+    
+    public void closeOutputStream(FileOutputStream outputStream) throws IOException {
+        if (outputStream != null) {
+            outputStream.close();
+        }
+    }
+    
+    
+ // Novo método com FileOutputStream
+    public void exportarPDFcloseOutputStream(String jrxml, Connection connection, FileOutputStream outputStream) throws JRException, IOException {
+        JasperReport report = compilandoJrxml(jrxml);
+
+        try {
+            if (GraphicsEnvironment.isHeadless()) {
+                throw new RuntimeException("O ambiente é headless. Não é possível exibir a interface gráfica.");
+            }
+
+            JasperPrint print = JasperFillManager.fillReport(report, params, connection);
+            JasperExportManager.exportReportToPdfStream(print, outputStream);
+            System.out.println("Relatório Gerado com Sucesso!!");
+        } finally {
+            closeOutputStream(outputStream);
+        }
+    }
+
+    
 
     public void exportarHTML(String jrxml, Connection connection, String saida) throws JRException {
         JasperReport report = compilandoJrxml(jrxml);
