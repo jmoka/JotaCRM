@@ -85,7 +85,13 @@ public class ServiceJasperViewer {
 
             JasperPrint print = JasperFillManager.fillReport(report, params, connection);
             JasperExportManager.exportReportToPdfStream(print, out);
+            
+            
+            
             System.out.println("Relatório Gerado com Sucesso!!");
+            
+            
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -143,6 +149,8 @@ public class ServiceJasperViewer {
     public ModelAndView redirecionar () {
     	// Cria um objeto RedirectView que aponta para a URL desejada
         RedirectView redirectView = new RedirectView();
+        
+        
         redirectView.setUrl("/atualizarListaNivel");
 
         // Retorna o ModelAndView com a RedirectView
@@ -152,7 +160,9 @@ public class ServiceJasperViewer {
         
         return modelAndView;
     }
-   
+    
+    
+      
  
     
 }

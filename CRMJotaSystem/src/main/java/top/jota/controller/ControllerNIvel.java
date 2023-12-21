@@ -53,6 +53,8 @@ public class ControllerNIvel implements InterfaceControllerDao{
 	    model.addAttribute("userList", userList);
 	    
 	    
+	    
+	    
 	    return "cadastroNivel"; // Substitua "nomeDaSuaView" pelo nome real do seu template de view
 	}
 

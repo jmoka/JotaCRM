@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.util.Properties;
 import java.util.UUID;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,29 +20,32 @@ import top.jota.db.Db;
 import top.jota.db.properties.DbProperties;
 	
 	
-	@RestController
+@Controller
 	public class ControllerRelatorioNivel {	
 
 		
 				
 		// TELA
 		
-			// TELA TODOS NIVEIS ID
+			// TELA TODOS NIVEIS ORDENAR POR ID
 	    @GetMapping("/relatorioNivelTodosTelaPorId")
-	    public ModelAndView relatorioNivelTodosTelaPorId() throws JRException {
-	    	System.out.println("nivelRelatorio");
-	    	
+	    public String relatorioNivelTodosTelaPorId(Model model) throws JRException {
+	    		    	
 	    	 DbProperties dbProperties = null;
-			 Db db = new Db(dbProperties);		
-			
+			 Db db = new Db(dbProperties);				
 			 
 			 try {
 				 ServiceJasperViewer service = new ServiceJasperViewer();	
 				 String jrxml = "relatorios/jrxml/nivelTodosOrderID.jrxml";
 				 
 				 service.abrirJasperViewer(jrxml,  db.connection());
+				 
+				 
+				 model.addAttribute("mensagem", "Relatório Gerado com Sucesso organizado por ID, abra o Relatório na Tela!");
+				 				 
 				 db.closeConnection();
-				  return service.redirecionar();
+				  return "cadastroNivel";
+				  
 			 }catch (Exception e) {
 				 e.printStackTrace();
 		           
@@ -116,7 +121,7 @@ import top.jota.db.properties.DbProperties;
 	            try (FileOutputStream outputStream = new FileOutputStream(caminhoCompleto)) {
 	                service.exportarPDFcloseOutputStream(jrxml, db.connection(), outputStream);
 	            }
-
+	            
 	            return service.redirecionar();
 
 	        } catch (Exception e) {
