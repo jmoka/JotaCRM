@@ -22,43 +22,45 @@
 </head>
 
 <body id="page-top" style="text-align: center;">
-    <div id="wrapper" style="width: 724px;">
-        <div>
-            <div class="bg-gradient-primary">
-                <div>
-                    <nav class="navbar fixed-top bg-dark navbar-dark">
-                        <div class="container-fluid">
-                            <button class="navbar-toggler" data-bs-toggle="offcanvas" type="button"
-                                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
-                                aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <a class="navbar-brand" href="http://jotaempresas.com">JotaCRM</a>
-                            <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1"
-                                id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-                                <div class="offcanvas-header">
-                                    <h5 id="offcanvasDarkNavbarLabel" class="offcanvas-title">Menu</h5>
-                                    <button class="btn-close" type="button" data-bs-dismiss="offcanvas"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="">
-                                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Configuração
-                                            </a>
-                                            <ul class="dropdown-menu dropdown-menu-dark">
-                                                <li><a class="dropdown-item" href="/atualizarListaNivel">Níveis</a></li>
-                                                <li><a class="dropdown-item" href="/atualizarDiretorioRelatorio">Diretório Exportar Relatório</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#">Outros</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
+	<div id="wrapper" style="width: 724px;">
+		<div>
+			<div class="bg-gradient-primary">
+				<div>
+					<nav class="navbar fixed-top bg-dark navbar-dark">
+						<div class="container-fluid">
+							<button class="navbar-toggler" data-bs-toggle="offcanvas" type="button"
+								data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<a class="navbar-brand" href="http://jotaempresas.com">JotaCRM</a>
+							<div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+								aria-labelledby="offcanvasDarkNavbarLabel">
+								<div class="offcanvas-header">
+									<h5 id="offcanvasDarkNavbarLabel" class="offcanvas-title">Menu</h5>
+									<button class="btn-close" type="button" data-bs-dismiss="offcanvas"
+										aria-label="Close"></button>
+								</div>
+								<div class="">
+									<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" role="button"
+												data-bs-toggle="dropdown" aria-expanded="false">
+												Configuração
+											</a>
+											<ul class="dropdown-menu dropdown-menu-dark">
+												<li><a class="dropdown-item" href="/atualizarListaNivel">Níveis</a></li>
+												<li><a class="dropdown-item"
+														href="/atualizarDiretorioRelatorio">Diretório Exportar
+														Relatório</a></li>
+												<li>
+													<hr class="dropdown-divider">
+												</li>
+												<li><a class="dropdown-item" href="#">Outros</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
 
 								<div class="">
 									<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
@@ -182,10 +184,10 @@
 								</div>
 							</span>
 						</div>
-						
-						
-						
-						
+
+
+
+
 						<div id="v-pills-relatorio" class="tab-pane fade" role="tabpanel"
 							aria-labelledby="v-pills-home-tab" tabindex="0">
 							<div class="ml-3">
@@ -195,14 +197,14 @@
 
 
 
-							<div  class="container">
+							<div class="container">
 								<div class="justify-content-center">
 									<div>
 										<select id="opcaoConsulta" class="opcaoConsulta form-select form-select-lg mb-3"
-											aria-label="Large select example">
+											aria-label="Large select example" onchange="bloquearOpcaoOrdem()">
 											<option selected>Escolha o Relatório</option>
-											<option value="1">Todos</option>
-											<option  value="2">Consultar por Id</option>
+											<option name="consultarPorTodos" value="1">Todos</option>
+											<option name="consultarPorID" value="2">Consultar por Id</option>
 											<option value="3">Consultar nome</option>
 										</select>
 										<select id="opcaoImpressao"
@@ -213,20 +215,17 @@
 											<option value="2">PDF</option>
 											<option value="3">HTML</option>
 										</select>
-										<select id="opcaoOrdem"
-											class="opcaoImpressão form-select form-select-lg mb-3"
+										<select id="opcaoOrdem" class="opcaoImpressão form-select form-select-lg mb-3"
 											aria-label="Large select example">
 											<option selected>Escolha Ordem de Impressão</option>
 											<option value="1">Por Id</option>
-											<option value="2">Por Nome</option>											
+											<option value="2">Por Nome</option>
 										</select>
 									</div>
 									<div>
 										<div class="text-center">
-											<!-- Corrected button element -->
 											<button class="btn btn-primary btn-block rounded-2 py-2" type="button"
 												onclick="gerarRelatorioNivel()">Gerar Relatório</button>
-
 										</div>
 									</div>
 								</div>
@@ -267,7 +266,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!--MODAL ID nivelRelatorioIdPDF -->
 	<div class="modal" tabindex="-1" id="nivelRelatorioIdPDF" data-idNivel="">
 		<div class="modal-dialog">
@@ -291,8 +290,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	<!--MODAL ID nivelRelatorioIdHTML -->
 	<div class="modal" tabindex="-1" id="nivelRelatorioIdHTML" data-idNivel="">
 		<div class="modal-dialog">
@@ -361,7 +360,7 @@
 	<script src="/js/modalNivelRelatorioID.js"></script>
 	<script src="/js/bloquearOpcaoOrdemImpressao.js"></script>
 
-	
+
 
 
 </body>

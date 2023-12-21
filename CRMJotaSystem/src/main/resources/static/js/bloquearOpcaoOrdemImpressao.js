@@ -2,17 +2,24 @@
 function bloquearOpcaoOrdem() {
     var opcaoConsulta = document.getElementById('opcaoConsulta');
     var opcaoOrdem = document.getElementById('opcaoOrdem');
-
-    // Check if the selected value is "2"
-    if (opcaoConsulta.value === '2') {
-        // Disable the opcaoOrdem select element
-        opcaoOrdem.disabled = true;
-    } else if(opcaoConsulta.value === '1') { 
+    
+    if(opcaoConsulta.value === '1') { 
+		
 		 opcaoOrdem.disabled = false;
-	}else{
-        // Enable the opcaoOrdem select element
-        opcaoOrdem.disabled = false;
+		 }
+
+    if (opcaoConsulta.value === '2') {
+       
+        opcaoOrdem.disabled = true;
+    
     }
+        
+    if(opcaoConsulta.value === '3') { 
+		
+          opcaoOrdem.disabled = true;
+          }
+          
+    	
 }
 
 // Function to enable the opcaoOrdem select element
