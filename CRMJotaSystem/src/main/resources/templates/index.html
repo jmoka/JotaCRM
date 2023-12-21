@@ -91,21 +91,22 @@
     </div>
     
 
-    <!--INICIALIZAR O DROPDOWN NO CORPO DO HTML 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Inicialização do dropdown
-            var dropdownTrigger = new bootstrap.Dropdown(document.querySelector('.dropdown-toggle'));
-        });
-    </script>
-    -->
+    <!-- SCRIPT DO ALERT-->
+	<script th:inline="javascript">
+		var mensagem = /*[[${mensagem}]]*/ "";
+
+		// Verifica se mensagem não é nula ou indefinida antes de chamar trim()
+		if (mensagem && mensagem.trim() !== "") {
+			alert(mensagem);
+			window.location.href = '/';  // Altere conforme necessário
+		} 
+	</script>
     
     
     <!-- SCRIPTS DO JS -->
-    <script src="/js/dropdown.js">  </script>
-    
-    
+    <script src="/js/dropdown.js">  </script>    
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
