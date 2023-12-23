@@ -316,6 +316,29 @@
 		</div>
 	</div>
 
+<!--MODAL NOME nivelRelatorioNomeTela -->
+	<div class="modal" tabindex="-1" id="nivelRelatorioNomeTela" data-idNivel="">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Digite o Nome do Nível</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<form th:action="@{/nivelRelatorioNomeTela}" method="post" class="d-flex mt-3" role="search">
+						<input name="nomeNivel" id="idNivelRelatorio" class="form-control me-2" type="search"
+							aria-label="Search" placeholder="Informe o Nome do Nível">
+						<button class="btn btn-success" type="submit">Consultar</button>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 

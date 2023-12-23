@@ -413,5 +413,129 @@ public class ControllerRelatorioNivel {
 		return null;
 
 	}
+	
+	
+	
+	// RELATÓRIO POR NOME
+
+		// TELA
+		@PostMapping("/nivelRelatorioNomeTela")
+		public String nivelRelatorioNomeTela(@RequestParam("nomeNivel") String nomeNivel, Model model) {
+		
+
+			DbProperties dbProperties = null;
+			Db db = new Db(dbProperties);
+			ServiceJasperViewer service = new ServiceJasperViewer();
+
+			try {
+				// Adiciona parâmetros e obtém JasperPrint
+				service.addParams("nomeNivel", nomeNivel);
+				service.abrirJasperViewer("relatorios/jrxml/nivelPorNome.jrxml", db.connection());
+				model.addAttribute("mensagem", "Relatório na Tela Gerado com Sucesso com Nome Escolhido " + nomeNivel
+						+ ", abra o relatório Minimizado ");
+
+				db.closeConnection();
+				return "cadastroNivel";
+			} catch (Exception e) {
+				// Trate a exceção, imprima mensagens ou redirecione para uma página de erro
+				e.printStackTrace();
+				return null;
+			}
+		}
+		
+		
+		// PDF
+		@PostMapping("/nivelRelatorioNomePDF")
+		public String nivelRelatorioNomePDF(@RequestParam("nomeNivel") String nomeNivel, Model model) {
+			DbProperties dbProperties = new DbProperties(); // Corrigir a criação do objeto DbProperties
+			Db db = new Db(dbProperties);
+
+			try {
+				Properties props = dbProperties.obterProperties();
+
+				// Gere uma UUID
+				UUID extensao = UUID.randomUUID();
+
+				// Obtenha o caminho de saída do arquivo do properties
+				String caminhoSaida = props.getProperty("caminhoSaida");
+
+				// Gere o nome do arquivo com a extensão ".pdf"
+				String nomeArquivo = "\\relatorio-" + extensao + ".pdf";
+
+				// Concatene o caminho de saída com o nome do arquivo
+				String caminhoCompleto = caminhoSaida + nomeArquivo;
+
+				System.out.println("Caminho completo do arquivo: " + caminhoCompleto);
+
+				String jrxml = "relatorios/jrxml/nivelPorNome.jrxml";
+
+				ServiceJasperViewer service = new ServiceJasperViewer();
+
+				// Adiciona parâmetros antes de exportar o PDF
+				service.addParams("nomeNivel", nomeNivel);
+
+				// Abra um FileOutputStream
+				try (FileOutputStream outputStream = new FileOutputStream(caminhoCompleto)) {
+					service.exportarPDFcloseOutputStream(jrxml, db.connection(), outputStream);
+				}
+
+				// Redirecionar para a visualização do relatório
+				model.addAttribute("mensagem",
+						"Relatório PDF Gerado com Sucesso com NOME Escolhido  " + nomeNivel + " no Caminho:  " + caminhoCompleto);
+
+				db.closeConnection();
+				return "cadastroNivel";
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				db.closeConnection();
+			}
+
+			return null;
+		}
+		
+		// HTML
+		@PostMapping("/nivelRelatorioNomeHTML")
+		public String nivelRelatorioNomeHTML(@RequestParam("nomeNivel") String nomeNivel, Model model) {
+			DbProperties dbProperties = new DbProperties();
+			Db db = new Db(dbProperties);
+
+			Properties props = dbProperties.obterProperties();
+
+			// Gere uma UUID
+			UUID extencao = UUID.randomUUID();
+
+			// Obtenha o caminho de saída do arquivo do properties
+			String caminhoSaida = props.getProperty("caminhoSaida");
+
+			// Gere o nome do arquivo com a extensão ".pdf"
+			String nomeArquivo = "\\relatorio-" + extencao + ".html";
+
+			// Concatene o caminho de saída com o nome do arquivo
+			String caminhoCompleto = caminhoSaida + nomeArquivo;
+
+			try {
+				String jrxml = "relatorios/jrxml/nivelPorNome.jrxml";
+				ServiceJasperViewer service = new ServiceJasperViewer();
+				service.exportarHTML(jrxml, db.connection(), caminhoCompleto);
+				// Adiciona parâmetros antes de exportar o PDF
+				service.addParams("nomeNivel", nomeNivel);
+				model.addAttribute("mensagem",
+						"Relatório HTML Gerado com Sucesso com Nome Escolhido " + nomeNivel + " no Caminho:  " + caminhoCompleto);
+
+				db.closeConnection();
+				return "cadastroNivel";
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			db.closeConnection();
+
+			return null;
+
+		}
+		
+	
 
 }

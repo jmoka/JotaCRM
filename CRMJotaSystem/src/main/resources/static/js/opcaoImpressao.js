@@ -96,6 +96,20 @@ function gerarRelatorioNivel() {
     		bootstrapModal.show();
     }
 	
+	
+	// RELATÓRIO PO NOME		
+			//TELA
+	if (opcaoConsulta == "3" && opcaoImpressao == "1") {
+		console.log("3 1");
+
+    	// Seleciona o modal e atribui o Nome
+    		const myModal = document.getElementById('nivelRelatorioNomeTela');
+    		myModal.setAttribute('data-idNivel', idNivel);
+
+    	// Exibe o modal
+    		const bootstrapModal = new bootstrap.Modal(myModal);
+    		bootstrapModal.show();
+    }
 
 	
 	
