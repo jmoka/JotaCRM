@@ -18,26 +18,31 @@
 
 <body>
 	
-	<!--MODAL ID -->
-	<div class="modal" tabindex="-1" id="modalCaminhoRelatorio">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Inform o Caminho da Pasta</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form th:action="@{/atualizarDiretorioExportacaoRelatorio}" method="post" class="d-flex mt-3"
-						role="search">
-						<input name="caminho" id="idNivelRelatorio" class="form-control me-2" type="search"
-							aria-label="Search"
-							placeholder="C:\Users\jotac\Documents\javaSystemas\JotaCRM\CRMJotaSystem\src\main\resources\relatorios">
-						<button class="btn btn-success" type="submit">Salvar</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+	<!--MODAL DE ATUALIZAÇÃO DO CAMINHO PARA SALVAR OS RELATÓRIOS -->
+<div class="modal" tabindex="-1" id="modalCaminhoRelatorio">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Informe o Caminho da Pasta</h5>
+
+                <button type="button" onclick="atualizarAoFechar()" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+
+            </div>
+
+            <div class="modal-body">
+                <form th:action="@{/atualizarDiretorioExportacaoRelatorio}" method="post" class="d-flex mt-3"
+                    role="search">
+                    <input name="caminho" id="idNivelRelatorio" class="form-control me-2" type="search"
+                        aria-label="Search"
+                        placeholder="C:\Users\jotac\Documents\javaSystemas\JotaCRM\CRMJotaSystem\src\main\resources\relatorios">
+                    <button class="btn btn-success" type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

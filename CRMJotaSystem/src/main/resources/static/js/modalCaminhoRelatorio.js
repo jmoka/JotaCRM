@@ -1,11 +1,12 @@
 const modalCaminhoRelatorio = new bootstrap.Modal(document.getElementById('modalCaminhoRelatorio'));
-const myInput = document.getElementById('idNivelRelatorio');
+const myInput = document.getElementById('caminho');
 
 modalCaminhoRelatorio.show();
 
-modalCaminhoRelatorio.addEventListener('shown.bs.modal', () => {
-	myInput.focus();
-});
+	
 
 
+function atualizarAoFechar(){
+	return  window.location.href = "/";
+}
 
