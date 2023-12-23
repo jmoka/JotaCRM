@@ -11,10 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperReport;
 import top.jota.dao.services.ServiceJasperViewer;
 import top.jota.db.Db;
 import top.jota.db.properties.DbProperties;
@@ -397,7 +396,7 @@ public class ControllerRelatorioNivel {
 			String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
 			ServiceJasperViewer service = new ServiceJasperViewer();
 			service.exportarHTML(jrxml, db.connection(), caminhoCompleto);
-			// Adiciona parâmetros antes de exportar o PDF
+			// Adiciona parâmetros antes de exportar o html
 			service.addParams("idNivel", id);
 			model.addAttribute("mensagem",
 					"Relatório HTML Gerado com Sucesso com ID Escolhido nº " + id + " no Caminho:  " + caminhoCompleto);
@@ -516,13 +515,13 @@ public class ControllerRelatorioNivel {
 			String caminhoCompleto = caminhoSaida + nomeArquivo;
 
 			try {
-				String jrxml = "relatorios/jrxml/nivelPorNome.jrxml";
+				String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
 				ServiceJasperViewer service = new ServiceJasperViewer();
 				service.exportarHTML(jrxml, db.connection(), caminhoCompleto);
-				// Adiciona parâmetros antes de exportar o PDF
+				// Adiciona parâmetros antes de exportar o html
 				service.addParams("nomeNivel", nomeNivel);
 				model.addAttribute("mensagem",
-						"Relatório HTML Gerado com Sucesso com Nome Escolhido " + nomeNivel + " no Caminho:  " + caminhoCompleto);
+						"Relatório HTML Gerado com Sucesso com ID Escolhido nº " + nomeNivel + " no Caminho:  " + caminhoCompleto);
 
 				db.closeConnection();
 				return "cadastroNivel";

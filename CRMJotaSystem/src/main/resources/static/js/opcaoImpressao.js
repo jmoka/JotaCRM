@@ -1,4 +1,5 @@
 // Corrija a referência da variável para "opcaoImpressao"
+
 function gerarRelatorioNivel() {
 	var opcaoConsulta = document.getElementById('opcaoConsulta').value;
 	var opcaoImpressao = document.getElementById('opcaoImpressao').value;
@@ -110,6 +111,33 @@ function gerarRelatorioNivel() {
     		const bootstrapModal = new bootstrap.Modal(myModal);
     		bootstrapModal.show();
     }
+    
+    		//PDF
+	if (opcaoConsulta == "3" && opcaoImpressao == "2") {
+		console.log("3 2");
+
+    	// Seleciona o modal e atribui o Nome
+    		const myModal = document.getElementById('nivelRelatorioNomePDF');
+    		myModal.setAttribute('data-idNivel', idNivel);
+
+    	// Exibe o modal
+    		const bootstrapModal = new bootstrap.Modal(myModal);
+    		bootstrapModal.show();
+    }
+    
+   			 //HTML
+	if (opcaoConsulta == "3" && opcaoImpressao == "3") {
+		console.log("3 3");
+
+    	// Seleciona o modal e atribui o Nome
+    		const myModal = document.getElementById('nivelRelatorioNomeHTML');
+    		myModal.setAttribute('data-idNivel', idNivel);
+
+    	// Exibe o modal
+    		const bootstrapModal = new bootstrap.Modal(myModal);
+    		bootstrapModal.show();
+    }
+
 
 	
 	
