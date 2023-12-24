@@ -1,45 +1,38 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<html data-bs-theme="light" lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-	<title>Jota Siatemas</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Jota Siatemas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-		
-		
-		
-	<!-- Estilo alternativo (branco) -->
+<!-- Estilo alternativo (branco) -->
 	<link id="estiloBranco" rel="stylesheet" type="text/css" href="/style/Branco.css">
 
     <!-- Estilo alternativo (preto) -->
     <link id="estiloPreto" rel="stylesheet" type="text/css" href="/style/Preto.css" disabled>
 
+
+
 </head>
-
 <body id="page-top" style="text-align: center;">
-	
-
 	<div id="wrapper"  style="width: 724px;">
 		<div>
 			<div class="bg-gradient-primary">
 				<div>
 					<nav class="text navbar fixed-top fundo">
 						<div class="container-fluid">
-							
 							<button class="navbar-toggler text" data-bs-toggle="offcanvas" type="button"
 								data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
 								aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
-							
-							
-							<span>JotaCRM rrrrr</span>
+							<a class="navbar-brand text" href="http://jotaempresas.com">JotaCRM</a>
 							
 							
 							<div class="form-check form-switch">
@@ -111,45 +104,17 @@
 			</div>
 		</div>
 	</div>
-	<a class="d-inline border rounded scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-	</div>
+     
+
 	
 	
-	
-	
-	<!--
-	<div class="container" style="margin: 22px;border-style: solid;margin-top: 200px;margin-left: 200px;">
-		<header>
-			<h1 style="height: 176.7px;position: relative;">Jota Systemas<br>CRM</h1>
-		</header>
-	</div>
-	-->
-	
-
-	<!-- SCRIPT DO ALERT-->
-	<script th:inline="javascript">
-		var mensagem = /*[[${mensagem}]]*/ "";
-
-		// Verifica se mensagem não é nula ou indefinida antes de chamar trim()
-		if (mensagem && mensagem.trim() !== "") {
-			alert(mensagem);
-			window.location.href = '/';  // Altere conforme necessário
-		} 
-	</script>
-
-
-
-
-
-	<!-- SCRIPTS DO JS -->
-	<script src="/js/dropdown.js">  </script>
-	<script src="/js/pretoBranco.js">  </script>
-	
-	
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-		crossorigin="anonymous"></script>
+    
+    
+    <!-- SCRIPTS DO JS -->
+    <script src="/js/dropdown.js">  </script>  
+    <script src="/js/pretoBranco.js">  </script>
+   
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </body>
 
