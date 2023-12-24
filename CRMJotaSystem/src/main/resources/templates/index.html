@@ -2,97 +2,121 @@
 <html data-bs-theme="light" lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Jota Siatemas</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>Jota Siatemas</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		
+		
+		
+	<!-- Estilo alternativo (branco) -->
+	<link id="estiloBranco" rel="stylesheet" type="text/css" href="/style/Branco.css">
+
+    <!-- Estilo alternativo (preto) -->
+    <link id="estiloPreto" rel="stylesheet" type="text/css" href="/style/Preto.css" disabled>
 
 </head>
 
 <body id="page-top" style="text-align: center;">
-    <div id="wrapper" style="width: 724px;">
-        <div>
-            <div class="bg-gradient-primary">
-                <div>
-                    <nav class="navbar fixed-top bg-dark navbar-dark">
-                        <div class="container-fluid">
-                            <button class="navbar-toggler" data-bs-toggle="offcanvas" type="button"
-                                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
-                                aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <a class="navbar-brand" href="http://jotaempresas.com">JotaCRM</a>
-                            <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1"
-                                id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-                                <div class="offcanvas-header">
-                                    <h5 id="offcanvasDarkNavbarLabel" class="offcanvas-title">Menu</h5>
-                                    <button class="btn-close" type="button" data-bs-dismiss="offcanvas"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="">
-                                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Configuração
-                                            </a>
-                                            <ul class="dropdown-menu dropdown-menu-dark">
-                                                <li><a class="dropdown-item" href="/atualizarListaNivel">Níveis</a></li>
-                                                <li><a class="dropdown-item" href="/atualizarDiretorioRelatorio">Diretório Exportar Relatório</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#">Outros</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="">
-                                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Dropdown
-                                            </a>
-                                            <ul class="dropdown-menu dropdown-menu-dark">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <form class="d-flex mt-3 mx-3" role="search">
-                                    <input class="form-control me-2" type="search" aria-label="Search"
-                                        placeholder="Digite o Cnpj">
-                                    <button class="btn btn-success" type="submit">Consultar</button>
-                                </form>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a class="d-inline border rounded scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    </div>
-    <div class="container" style="margin: 22px;border-style: solid;margin-top: 200px;margin-left: 200px;">
-        <header>
-            <h1 style="height: 176.7px;position: relative;">Jota Systemas<br>CRM</h1>
-        </header>
-    </div>
-    
-     
-    
-    <!-- SCRIPT DO ALERT-->
+	<div id="wrapper"  style="width: 724px;">
+		<div>
+			<div class="bg-gradient-primary">
+				<div>
+					<nav class="text navbar fixed-top fundo">
+						<div class="container-fluid">
+							<button class="navbar-toggler text" data-bs-toggle="offcanvas" type="button"
+								data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<a class="navbar-brand text" href="http://jotaempresas.com">JotaCRM</a>
+							
+							
+							<div class="form-check form-switch">
+								<input class="form-check-input" type="checkbox" role="switch"
+									id="pretoBranco"  onchange="pretoBranco()">
+									
+								<label class="bg-primary form-check-label" for="flexSwitchCheckChecked"></label>
+							</div>
+							
+							
+							
+							<div class=" offcanvas offcanvas-start fundo" tabindex="-1" id="offcanvasDarkNavbar"
+								aria-labelledby="offcanvasDarkNavbarLabel">
+								<div class="offcanvas-header">
+									<h5 id="offcanvasDarkNavbarLabel" class="offcanvas-title text">Menu</h5>
+									
+									<button class="btn-close btnFechar" type="button" data-bs-dismiss="offcanvas"
+										aria-label="Close"></button>
+								    </div>
+								
+								<div class="btnOpcaoes">
+									<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" role="button"
+												data-bs-toggle="dropdown" aria-expanded="false">
+												Configuração
+											</a>
+											<ul class="dropdown-menu dropdown-menu-dark">
+												<li><a class="dropdown-item" href="/atualizarListaNivel">Níveis</a></li>
+												<li><a class="dropdown-item"
+														href="/atualizarDiretorioRelatorio">Diretório Exportar
+														Relatório</a></li>
+												<li>
+													<hr class="dropdown-divider">
+												</li>
+												<li><a class="dropdown-item" href="#">Outros</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+
+								<div class="">
+									<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" role="button"
+												data-bs-toggle="dropdown" aria-expanded="false">
+												Dropdown
+											</a>
+											<ul class="dropdown-menu dropdown-menu-dark">
+												<li><a class="dropdown-item" href="#">Action</a></li>
+												<li><a class="dropdown-item" href="#">Another action</a></li>
+												<li>
+													<hr class="dropdown-divider">
+												</li>
+												<li><a class="dropdown-item" href="#">Something else here</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+								<form class="d-flex mt-3 mx-3" role="search">
+									<input class="form-control me-2" type="search" aria-label="Search"
+										placeholder="Digite o Cnpj">
+									<button class="btn btn-success" type="submit">Consultar</button>
+								</form>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a class="d-inline border rounded scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+	</div>
+	<div class="container" style="margin: 22px;border-style: solid;margin-top: 200px;margin-left: 200px;">
+		<header>
+			<h1 style="height: 176.7px;position: relative;">Jota Systemas<br>CRM</h1>
+		</header>
+	</div>
+
+
+
+	<!-- SCRIPT DO ALERT-->
 	<script th:inline="javascript">
 		var mensagem = /*[[${mensagem}]]*/ "";
 
@@ -102,15 +126,20 @@
 			window.location.href = '/';  // Altere conforme necessário
 		} 
 	</script>
+
+
+
+
+
+	<!-- SCRIPTS DO JS -->
+	<script src="/js/dropdown.js">  </script>
+	<script src="/js/pretoBranco.js">  </script>
 	
 	
-	
-    
-    
-    <!-- SCRIPTS DO JS -->
-    <script src="/js/dropdown.js">  </script>  
-   
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
 
 </body>
 

@@ -1,0 +1,28 @@
+body{
+	
+  background-color: #000;
+  
+  font-family: Arial, sans-serif;
+}
+
+.fundo{
+	 background-color: black;
+	 
+	
+}
+
+.btnOpcaoes{
+	  background-color: darkgray;
+	  
+}
+
+.btnFechar{
+	 background-color: darkgray;
+	  
+	 	
+	
+}
+
+.text{
+	 color: white;
+}
