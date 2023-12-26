@@ -22,25 +22,56 @@ public class ControleProperties {
 	// ATUALIZAR E REDIRECIONAR
 
 		@PostMapping("/atualizarDiretorioExportacaoRelatorio")
-		public String atualizarDiretorioExportacaoRelatorio(@RequestParam("caminho") String caminho, Model model)
+		public String atualizarDiretorioExportacaoRelatorio(@RequestParam("opcao") String opcao, Model model)
 				throws JRException {
 
-			if (caminho != null) {
+			if (opcao != null) {
 				Connection conection = null;
 				DbProperties dbProperties = null;
 				Db db = new Db(dbProperties);
 				String nomeDB = "exportarRelatorio";
-				String caminhoArquivo = "src/main/resources/" + nomeDB + ".properties";
+				String opcaoArquivo = "src/main/resources/" + nomeDB + ".properties";
 
-				Properties props = dbProperties.obterProperties("exportarRelatorio");
+				 Properties props = dbProperties.obterProperties("opcaoStyle");        
+			        
 
-				dbProperties.salvarPropertiesDiretorioRelatório(caminhoArquivo, caminho, props);
+				 dbProperties.salvarOpcaoStyle(opcaoArquivo, opcao, props);    
+
+				
+				model.addAttribute("mensagem", "opcao Salvo com Sucesso no Diretório: " + opcao);
+
+				db.closeConnection();
+				return "index";
+
+			} else {
+				System.out.println("erro");
+			}
+
+			return null;
+
+		}
+		
+		
+		@PostMapping("/atualizarStyle")
+		public String atualizarStyle(@RequestParam("opcao") String opcao, Model model)
+				throws JRException {
+
+			if (opcao != null) {
+				Connection conection = null;
+				DbProperties dbProperties = null;
+				Db db = new Db(dbProperties);
+				String nomeDB = "opcaoStyle";
+				String opcaoArquivo = "src/main/resources/" + nomeDB + ".properties";
+
+				Properties props = dbProperties.obterProperties("opcaoStyle");
+
+				dbProperties.salvarPropertiesDiretorioRelatório(opcaoArquivo, opcao, props);
 
 				ServiceJasperViewer service = new ServiceJasperViewer();
 
-				service.exportarPDF(caminhoArquivo, conection, caminho);
+				service.exportarPDF(opcaoArquivo, conection, opcao);
 
-				model.addAttribute("mensagem", "Caminho Salvo com Sucesso no Diretório: " + caminho);
+				model.addAttribute("mensagem", "opcao Salvo com Sucesso no Diretório: " + opcao);
 
 				db.closeConnection();
 				return "index";

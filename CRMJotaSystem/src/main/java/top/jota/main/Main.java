@@ -26,17 +26,20 @@ public class Main implements CommandLineRunner {
         
     	DbProperties dbProperties = null;
     	
-        String argumento = "valorDoArgumento";
-
+    	String nomeDB = "opcaoStyle";
+    	String opcaoArquivo = "src/main/resources/" + nomeDB + ".properties";
         
-        Properties resultado = dbProperties.obterProperties("opcaoStyle");    
+        Properties props = dbProperties.obterProperties("opcaoStyle");          
         
-        String conteudo = resultado.getProperty("style");
+        dbProperties.salvarOpcaoStyle(opcaoArquivo, "branco", props);        
+         
+        
+        String conteudo = props.getProperty("style");
       
         System.out.println("RESULTADO" + conteudo);
      
-        for (String key : resultado.stringPropertyNames()) {
-            System.out.println(key + ": " + resultado.getProperty(key));
+        for (String key : props.stringPropertyNames()) {
+            System.out.println(key + ": " + props.getProperty(key));
         }
     	
     

@@ -50,7 +50,7 @@ public class DbProperties {
 */
 	public static void salvarPropertiesDiretorioRelatório(String caminhoArquivo, String novoCaminhoSaida, Properties props) {
         // Atualiza a propriedade caminhoSaida
-        props.setProperty("caminhoSaida", novoCaminhoSaida);
+        props.setProperty("style", novoCaminhoSaida);
 
         try (OutputStream os = new FileOutputStream(caminhoArquivo)) {
             props.store(os, "Comentário opcional");
