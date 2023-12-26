@@ -4,9 +4,10 @@ function pretoBranco() {
     var estiloBranco = document.getElementById('estiloBranco');
 
     // Verifica se o switch checkbox está marcado ou não
-    var checked = pretoBranco.checked ? "Preto" : "Branco";
+    var checked = pretoBranco.checked;
+    
 
-    if (checked == "Preto") {
+    if (!checked) {
         estiloPreto.removeAttribute('disabled');
         estiloBranco.setAttribute('disabled', 'true');
     } else {
@@ -15,7 +16,7 @@ function pretoBranco() {
     }
 
     // Exibe a informação em um alerta (você pode manipular a informação como desejar)
-    alert('O switch checkbox está ' + checked);
+    alert('O switch checkbox está ' + (checked ? 'Claro' : 'Escuro'));
 
     // Use AJAX para enviar a opção ao servidor
     $.ajax({
@@ -23,10 +24,13 @@ function pretoBranco() {
         url: '/atualizarStyle',
         data: { opcao: checked },
         success: function(response) {
-           
+            // Lida com a resposta do servidor, se necessário
         },
         error: function(error) {
             console.error('Erro na solicitação AJAX:', error);
         }
     });
 }
+   
+ 
+   

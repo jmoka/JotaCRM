@@ -24,24 +24,14 @@ public class Main implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         
-    	DbProperties dbProperties = null;
-    	
+    	DbProperties dbProperties = null;    	
     	String nomeDB = "opcaoStyle";
     	String opcaoArquivo = "src/main/resources/" + nomeDB + ".properties";
         
-        Properties props = dbProperties.obterProperties("opcaoStyle");          
-        
-        dbProperties.salvarOpcaoStyle(opcaoArquivo, "branco", props);        
-         
-        
-        String conteudo = props.getProperty("style");
-      
-        System.out.println("RESULTADO" + conteudo);
-     
-        for (String key : props.stringPropertyNames()) {
-            System.out.println(key + ": " + props.getProperty(key));
-        }
-    	
+        Properties props = dbProperties.obterProperties("opcaoStyle");      
+        String style = props.getProperty("style");
+        System.out.println("style" + style);
+            	
     
     	
     	

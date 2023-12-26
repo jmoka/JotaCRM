@@ -84,4 +84,23 @@ public class ControleProperties {
 
 		}
 
+		
+		
+		@PostMapping("/obterPropertiesStyle")
+		public Properties obterPropertiesStyle(@RequestParam("opcao") String opcao, Model model)
+				throws JRException {
+			
+			DbProperties obterProperties = null;	
+			
+			Properties style = obterProperties.obterProperties("opcaoStyle");
+			
+			model.addAttribute("opcaoStyle", style.getProperty("style")); 
+			
+			
+			return style;
+			
+		}
+		
+		
+		
 }
