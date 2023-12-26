@@ -87,7 +87,7 @@ public class ControllerRelatorioNivel {
 		Db db = new Db(dbProperties);
 
 		try {
-			Properties props = dbProperties.obterProperties();
+			Properties props = dbProperties.obterProperties("exportarRelatorio");
 
 			// Gere uma UUID
 			UUID extensao = UUID.randomUUID();
@@ -135,7 +135,7 @@ public class ControllerRelatorioNivel {
 		Db db = new Db(dbProperties);
 
 		try {
-			Properties props = dbProperties.obterProperties();
+			Properties props = dbProperties.obterProperties("exportarRelatorio");
 
 			// Gere uma UUID
 			UUID extensao = UUID.randomUUID();
@@ -186,7 +186,7 @@ public class ControllerRelatorioNivel {
 		DbProperties dbProperties = new DbProperties();
 		Db db = new Db(dbProperties);
 
-		Properties props = dbProperties.obterProperties();
+		Properties props = dbProperties.obterProperties("exportarRelatorio");
 
 		// Gere uma UUID
 		UUID extencao = UUID.randomUUID();
@@ -227,7 +227,7 @@ public class ControllerRelatorioNivel {
 		DbProperties dbProperties = new DbProperties();
 		Db db = new Db(dbProperties);
 
-		Properties props = dbProperties.obterProperties();
+		Properties props = dbProperties.obterProperties("exportarRelatorio");
 
 		// Gere uma UUID
 		UUID extencao = UUID.randomUUID();
@@ -273,7 +273,7 @@ public class ControllerRelatorioNivel {
 			String nomeDB = "exportarRelatorio";
 			String caminhoArquivo = "src/main/resources/" + nomeDB + ".properties";
 
-			Properties props = dbProperties.obterProperties();
+			Properties props = dbProperties.obterProperties("exportarRelatorio");
 
 			dbProperties.salvarPropertiesDiretorioRelatório(caminhoArquivo, caminho, props);
 
@@ -328,7 +328,7 @@ public class ControllerRelatorioNivel {
 		Db db = new Db(dbProperties);
 
 		try {
-			Properties props = dbProperties.obterProperties();
+			Properties props = dbProperties.obterProperties("exportarRelatorio");
 
 			// Gere uma UUID
 			UUID extensao = UUID.randomUUID();
@@ -378,7 +378,7 @@ public class ControllerRelatorioNivel {
 		DbProperties dbProperties = new DbProperties();
 		Db db = new Db(dbProperties);
 
-		Properties props = dbProperties.obterProperties();
+		Properties props = dbProperties.obterProperties("exportarRelatorio");
 
 		// Gere uma UUID
 		UUID extencao = UUID.randomUUID();
@@ -450,7 +450,7 @@ public class ControllerRelatorioNivel {
 			Db db = new Db(dbProperties);
 
 			try {
-				Properties props = dbProperties.obterProperties();
+				Properties props = dbProperties.obterProperties("exportarRelatorio");
 
 				// Gere uma UUID
 				UUID extensao = UUID.randomUUID();
@@ -500,7 +500,7 @@ public class ControllerRelatorioNivel {
 			DbProperties dbProperties = new DbProperties();
 			Db db = new Db(dbProperties);
 
-			Properties props = dbProperties.obterProperties();
+			Properties props = dbProperties.obterProperties("exportarRelatorio");
 
 			// Gere uma UUID
 			UUID extencao = UUID.randomUUID();

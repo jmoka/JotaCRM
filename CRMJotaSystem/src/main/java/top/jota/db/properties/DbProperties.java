@@ -31,6 +31,7 @@ public class DbProperties {
 		}
 	}
 	
+	/*
 	public static Properties obterProperties() {
 		
 		String nomeDB = "exportarRelatorio";
@@ -46,7 +47,7 @@ public class DbProperties {
         }
     }
 		
-
+*/
 	public static void salvarPropertiesDiretorioRelatório(String caminhoArquivo, String novoCaminhoSaida, Properties props) {
         // Atualiza a propriedade caminhoSaida
         props.setProperty("caminhoSaida", novoCaminhoSaida);
@@ -60,4 +61,44 @@ public class DbProperties {
         }
 	
 	}
+	
+	
+	
+	
+public static Properties obterProperties(String nomeDB) {
+	
+		String caminhoArquivo = "src/main/resources/"+nomeDB+".properties";
+        try (InputStream fs = new FileInputStream(caminhoArquivo)) {
+            Properties props = new Properties();
+            props.load(fs);
+            System.out.println("Arquivo properties encontrado");
+            return props;
+        } catch (IOException e) {
+            System.out.println("Arquivo properties não encontrado");
+            throw new RuntimeException(e.getMessage(), e);
+        }
+    }
+
+
+public static void salvarOpcaoStyle(String caminhoArquivo, String opcao, Properties props) {
+    // Atualiza a propriedade caminhoSaida
+    props.setProperty("style", opcao);
+
+    try (OutputStream os = new FileOutputStream(caminhoArquivo)) {
+        props.store(os, "Comentário opcional");
+        System.out.println("Propriedades salvas com sucesso");
+    } catch (IOException e) {
+        System.out.println("Erro ao salvar as propriedades");
+        throw new RuntimeException(e.getMessage(), e);
+    }
+
 }
+
+
+}
+	
+	
+	
+	
+	
+
