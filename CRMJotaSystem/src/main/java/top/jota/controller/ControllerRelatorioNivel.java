@@ -260,39 +260,7 @@ public class ControllerRelatorioNivel {
 
 	}
 
-	// ATUALIZAR E REDIRECIONAR
-
-	@PostMapping("/atualizarDiretorioExportacaoRelatorio")
-	public String atualizarDiretorioExportacaoRelatorio(@RequestParam("caminho") String caminho, Model model)
-			throws JRException {
-
-		if (caminho != null) {
-			Connection conection = null;
-			DbProperties dbProperties = null;
-			Db db = new Db(dbProperties);
-			String nomeDB = "exportarRelatorio";
-			String caminhoArquivo = "src/main/resources/" + nomeDB + ".properties";
-
-			Properties props = dbProperties.obterProperties("exportarRelatorio");
-
-			dbProperties.salvarPropertiesDiretorioRelatório(caminhoArquivo, caminho, props);
-
-			ServiceJasperViewer service = new ServiceJasperViewer();
-
-			service.exportarPDF(caminhoArquivo, conection, caminho);
-
-			model.addAttribute("mensagem", "Caminho Salvo com Sucesso no Diretório: " + caminho);
-
-			db.closeConnection();
-			return "index";
-
-		} else {
-			System.out.println("erro");
-		}
-
-		return null;
-
-	}
+	
 
 	// RELATÓRIO POR ID
 
