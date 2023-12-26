@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.sf.jasperreports.engine.JRException;
 import top.jota.dao.services.ServiceJasperViewer;
@@ -87,20 +88,16 @@ public class ControleProperties {
 		
 		
 		@PostMapping("/obterPropertiesStyle")
-		public Properties obterPropertiesStyle(@RequestParam("opcao") String opcao, Model model)
-				throws JRException {
-			
-			DbProperties obterProperties = null;	
-			
-			Properties style = obterProperties.obterProperties("opcaoStyle");
-			
-			model.addAttribute("opcaoStyle", style.getProperty("style")); 
-			
-			
-			return style;
-			
+		@ResponseBody
+		public String obterPropertiesStyle() throws JRException {
+		    DbProperties dbProperties = null;
+		    String nomeDB = "opcaoStyle";
+		    String opcaoArquivo = "src/main/resources/" + nomeDB + ".properties";
+
+		    Properties props = dbProperties.obterProperties("opcaoStyle");
+		    String style = props.getProperty("style");
+		    return style;
 		}
-		
 		
 		
 }

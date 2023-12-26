@@ -30,7 +30,7 @@ public class Main implements CommandLineRunner {
         
         Properties props = dbProperties.obterProperties("opcaoStyle");      
         String style = props.getProperty("style");
-        System.out.println("style" + style);
+       
             	
     
     	
