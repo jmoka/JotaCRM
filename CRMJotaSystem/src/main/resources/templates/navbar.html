@@ -23,21 +23,21 @@
 <body id="page-top" style="text-align: center">
 	
 
-	<div>
-		
+	
+		<div>
 					
-					<nav class="text navbar fixed-top fundo">
-						<div class="container-fluid">
+					<nav class="fundoMenuHear navbar fixed-top">
+						<div class="container-fluid ">
 							
 							
-							<button class="navbar-toggler text" data-bs-toggle="offcanvas" type="button"
+							<button class="navbar-toggler border border-primary" data-bs-toggle="offcanvas" type="button"
 								data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
 								aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
 							
 							
-							<span>JotaCRM</span>							
+							<span class="text">JotaCRM</span>							
 						
 						
 							<div class="form-check form-switch">
@@ -46,28 +46,29 @@
 							</div>
 					
 							
-							
-							
-							<div class=" offcanvas offcanvas-start fundo" tabindex="-1" id="offcanvasDarkNavbar"
+												
+							<div class=" offcanvas offcanvas-start " tabindex="-1" id="offcanvasDarkNavbar"
 								aria-labelledby="offcanvasDarkNavbarLabel">
-								<div class="offcanvas-header">
-									<h5 id="offcanvasDarkNavbarLabel" class="offcanvas-title text">Menu</h5>
-									
-									<button class="btn-close btnFechar" type="button" data-bs-dismiss="offcanvas"
-										aria-label="Close"></button>
 								
-								    </div>
-								
-								<div class="btnOpcaoes">
+								<div  class="offcanvas-header fundoMenuHear">
+									<h5 id="offcanvasDarkNavbarLabel" class="offcanvas-title text">Menu</h5>									
+									<button  class="btn-close bg-primary" type="button" data-bs-dismiss="offcanvas"
+										aria-label="Close">
+									</button>
+								</div>
+								    
+								    
+								<div class=" Fundonavbar btnConfiguracao">
+								<div class="btnConfiguracao">
 									<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 										<li class="nav-item dropdown">
 											<a class="nav-link dropdown-toggle" href="#" role="button"
 												data-bs-toggle="dropdown" aria-expanded="false">
-												Configuração
+												<span class="text">Configuração</span>
 											</a>
-											<ul class="dropdown-menu dropdown-menu-dark">
-												<li><a class="dropdown-item" href="/atualizarListaNivel">Níveis</a></li>
-												<li><a class="dropdown-item"
+											<ul class="dropdown-menu dropdown-menu-lihgt">
+												<li><a class="dropdown-item text" href="/atualizarListaNivel">Níveis</a></li>
+												<li><a class="dropdown-item text"
 														href="/atualizarDiretorioRelatorio">Diretório Exportar
 														Relatório</a></li>
 												<li>
@@ -79,36 +80,51 @@
 									</ul>
 								</div>
 
-								<div class="">
+								
+								
+								<div class="btnConfiguracao ">
 									<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 										<li class="nav-item dropdown">
 											<a class="nav-link dropdown-toggle" href="#" role="button"
 												data-bs-toggle="dropdown" aria-expanded="false">
-												Dropdown
+												<span class="text">Cadastros</span>
 											</a>
-											<ul class="dropdown-menu dropdown-menu-dark">
-												<li><a class="dropdown-item" href="#">Action</a></li>
-												<li><a class="dropdown-item" href="#">Another action</a></li>
+											<ul class="dropdown-menu dropdown-menu-lihgt">
+												<li><a class="dropdown-item text" href="/atualizarListaNivel">Clientes</a></li>
+												<li><a class="dropdown-item text"
+														href="/">Colaboradores</a></li>
 												<li>
 													<hr class="dropdown-divider">
 												</li>
-												<li><a class="dropdown-item" href="#">Something else here</a></li>
+												<li><a class="dropdown-item" href="#">Outros</a></li>
 											</ul>
 										</li>
 									</ul>
 								</div>
+
+								
+								
+								</div>
+								
+								
+								
+								
+								
+								
+								
 								<form class="d-flex mt-3 mx-3" role="search">
-									<input class="form-control me-2" type="search" aria-label="Search"
-										placeholder="Digite o Cnpj">
-									<button class="btn btn-success" type="submit">Consultar</button>
+									<div class="input-group mb-3 ">
+  											<input type="text" class="form-control border border-primary " placeholder="Digite o CNPJ que deseja consultar" aria-label="Recipient's username" aria-describedby="button-addon2">
+  										<button class="btn btn-outline-primary" type="button" id="button-addon2">CNPJ</button>
+									</div>
 								</form>
 							</div>
 						</div>
 					</nav>
 				
+	
+	
 	</div>
-	
-	
 	
 	<!--
 	<div class="container" style="margin: 22px;border-style: solid;margin-top: 200px;margin-left: 200px;">
