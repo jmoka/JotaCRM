@@ -39,7 +39,7 @@ public class ControllerRelatorioNivel {
 			model.addAttribute("mensagem", "Relatório Gerado com Sucesso organizado por ID, abra o Relatório na Tela!");
 
 			db.closeConnection();
-			return "cadastroNivel";
+			return "redirect:/atualizarListaNivel";
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,7 +67,7 @@ public class ControllerRelatorioNivel {
 					"Relatório Gerado com Sucesso organizado por NOME, abra o Relatório na Tela!");
 
 			db.closeConnection();
-			return "cadastroNivel";
+			return "redirect:/atualizarListaNivel";
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -116,7 +116,7 @@ public class ControllerRelatorioNivel {
 					"Relatório PDF Gerado com Sucesso Organizado por ID !! verifique o Caminho:  " + caminhoCompleto);
 
 			db.closeConnection();
-			return "cadastroNivel";
+			return "redirect:/atualizarListaNivel";
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -151,7 +151,7 @@ public class ControllerRelatorioNivel {
 
 			System.out.println("Caminho completo do arquivo: " + caminhoCompleto);
 
-			String jrxml = "relatorios/jrxml/nivelPorNome.jrxml";
+			String jrxml = "relatorios/jrxml/nivelTodosOrderNome.jrxml";
 
 			ServiceJasperViewer service = new ServiceJasperViewer();
 
@@ -165,8 +165,7 @@ public class ControllerRelatorioNivel {
 					"Relatório PDF Gerado com Sucesso Organizado por NOME !! verifique o Caminho:  " + caminhoCompleto);
 
 			db.closeConnection();
-			return "cadastroNivel";
-
+			return "redirect:/atualizarListaNivel";
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -208,7 +207,7 @@ public class ControllerRelatorioNivel {
 			model.addAttribute("mensagem",
 					"Relatório HTML Gerado com Sucesso Organizado por ID !! verifique o Caminho:  " + caminhoCompleto);
 			db.closeConnection();
-			return "cadastroNivel";
+			return "redirect:/pageCadastroNivel";
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -242,14 +241,14 @@ public class ControllerRelatorioNivel {
 		String caminhoCompleto = caminhoSaida + nomeArquivo;
 
 		try {
-			String jrxml = "relatorios/jrxml/nivelPorNome.jrxml";
+			String jrxml = "relatorios/jrxml/nivelTodosOrderNome.jrxml";
 			ServiceJasperViewer service = new ServiceJasperViewer();
 			service.exportarHTML(jrxml, db.connection(), caminhoCompleto);
 			model.addAttribute("mensagem",
 					"Relatório HTML Gerado com Sucesso Organizado por NOME !! verifique o Caminho:  "
 							+ caminhoCompleto);
 			db.closeConnection();
-			return "cadastroNivel";
+			return "redirect:/pageCadastroNivel";
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -281,7 +280,7 @@ public class ControllerRelatorioNivel {
 					+ ", abra o relatório Minimizado ");
 
 			db.closeConnection();
-			return "cadastroNivel";
+			return "redirect:/atualizarListaNivel";
 		} catch (Exception e) {
 			// Trate a exceção, imprima mensagens ou redirecione para uma página de erro
 			e.printStackTrace();
@@ -329,7 +328,7 @@ public class ControllerRelatorioNivel {
 					"Relatório PDF Gerado com Sucesso com ID Escolhido nº " + id + " no Caminho:  " + caminhoCompleto);
 
 			db.closeConnection();
-			return "cadastroNivel";
+			return "redirect:/atualizarListaNivel";
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -354,23 +353,21 @@ public class ControllerRelatorioNivel {
 		// Obtenha o caminho de saída do arquivo do properties
 		String caminhoSaida = props.getProperty("caminhoSaida");
 
-		// Gere o nome do arquivo com a extensão ".pdf"
+	
 		String nomeArquivo = "\\relatorio-" + extencao + ".html";
 
 		// Concatene o caminho de saída com o nome do arquivo
 		String caminhoCompleto = caminhoSaida + nomeArquivo;
 
 		try {
-			String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
+			String jrxml = "relatorios/jrxml/nivelTodosOrderID.jrxml";
 			ServiceJasperViewer service = new ServiceJasperViewer();
 			service.exportarHTML(jrxml, db.connection(), caminhoCompleto);
-			// Adiciona parâmetros antes de exportar o html
-			service.addParams("idNivel", id);
 			model.addAttribute("mensagem",
-					"Relatório HTML Gerado com Sucesso com ID Escolhido nº " + id + " no Caminho:  " + caminhoCompleto);
-
+					"Relatório HTML Gerado com Sucesso Organizado por NOME !! verifique o Caminho:  "
+							+ caminhoCompleto);
 			db.closeConnection();
-			return "cadastroNivel";
+			return "redirect:/pageCadastroNivel";
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -402,7 +399,7 @@ public class ControllerRelatorioNivel {
 						+ ", abra o relatório Minimizado ");
 
 				db.closeConnection();
-				return "cadastroNivel";
+				return "redirect:/pageCadastroNivel";
 			} catch (Exception e) {
 				// Trate a exceção, imprima mensagens ou redirecione para uma página de erro
 				e.printStackTrace();
@@ -448,10 +445,10 @@ public class ControllerRelatorioNivel {
 
 				// Redirecionar para a visualização do relatório
 				model.addAttribute("mensagem",
-						"Relatório PDF Gerado com Sucesso com NOME Escolhido  " + nomeNivel + " no Caminho:  " + caminhoCompleto);
+						"Relatório PDF Gerado com Sucesso com ID Escolhido nº " + nomeNivel + " no Caminho:  " + caminhoCompleto);
 
 				db.closeConnection();
-				return "cadastroNivel";
+				return "redirect:/atualizarListaNivel";
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -476,23 +473,31 @@ public class ControllerRelatorioNivel {
 			// Obtenha o caminho de saída do arquivo do properties
 			String caminhoSaida = props.getProperty("caminhoSaida");
 
-			// Gere o nome do arquivo com a extensão ".pdf"
+		
 			String nomeArquivo = "\\relatorio-" + extencao + ".html";
 
 			// Concatene o caminho de saída com o nome do arquivo
 			String caminhoCompleto = caminhoSaida + nomeArquivo;
+			
+			
+			
 
 			try {
-				String jrxml = "relatorios/jrxml/nivelPorNome.jrxml";
+				
 				ServiceJasperViewer service = new ServiceJasperViewer();
-				service.exportarHTML(jrxml, db.connection(), caminhoCompleto);
-				// Adiciona parâmetros antes de exportar o html
-				service.addParams("nomeNivel", nomeNivel);
-				model.addAttribute("mensagem",
-						"Relatório HTML Gerado com Sucesso com ID Escolhido nº " + nomeNivel + " no Caminho:  " + caminhoCompleto);
 
+				// Adiciona parâmetros antes de exportar o PDF
+				service.addParams("nomeNivel", nomeNivel);
+				
+				
+				String jrxml = "relatorios/jrxml/nivelPorNome.jrxml";
+				
+				service.exportarHTML(jrxml, db.connection(), caminhoCompleto);
+				model.addAttribute("mensagem",
+						"Relatório HTML Gerado com Sucesso Organizado por NOME !! verifique o Caminho:  "
+								+ caminhoCompleto);
 				db.closeConnection();
-				return "cadastroNivel";
+				return "redirect:/pageCadastroNivel";
 
 			} catch (Exception e) {
 				e.printStackTrace();
