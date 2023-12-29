@@ -25,14 +25,15 @@
     
   
 	
-
+ <!-- Estilo alternativo (preto) -->
+    <link id="estiloPreto" rel="stylesheet" type="text/css" href="/style/Preto.css" disabled>
 
 
 </head>
 
 
 
-<body>
+<body class="">
 
 
 
@@ -41,7 +42,7 @@
 
 
 
-	<div class="container" >
+	<div class="fundo container" >
 		<div class="margem">
 			<div class="container">
 				<h1 class=" text aline text-start">Níveis</h1>
@@ -99,25 +100,25 @@
 								</div>
 							</div>
 						</div>
-						<div id="v-pills-profile" class="bg-primary tab-pane fade" role="tabpanel"
-							aria-labelledby="v-pills-disabled-tab" tabindex="0" style="width: auto;">
+						<div id="v-pills-profile" class="fundoContainer tab-pane fade p-3" role="tabpanel"
+							aria-labelledby="v-pills-disabled-tab" tabindex="0" >
 							<span>
 								<div>
-									<h1 class="text">Consultar Níveis</h1>
+									<h1 class="textPreto">Consultar Níveis</h1>
 								</div>
 								<div>
 									<table id="dt-filter-select" class="table" cellspacing="0" width="100%">
 										<thead>
 											<tr>
-												<th class="th-sm">idNivel</th>
+												<th class="color th-sm">idNivel</th>
 												<th class="th-sm">nomeNivel</th>
 											</tr>
 										</thead>
 										<tbody class="bg-info-subtle">
 											<!-- Iteração sobre a lista de níveis -->
 											<tr  th:each="nivel : ${userList}">
-												<td class="color" th:text="${nivel.idNivel}"></td>
-												<td class="color1" th:text="${nivel.nomeNivel}"></td>
+												<td  th:text="${nivel.idNivel}"></td>
+												<td th:text="${nivel.nomeNivel}"></td>
 											</tr>
 										</tbody>
 										<tfoot>

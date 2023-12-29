@@ -16,7 +16,7 @@ public class DbProperties {
 
 	public static Properties dbPropretiesMysqlLocal() {
 		
-		String nomeDB = "cpanel";
+		String nomeDB = "mysql";
 
 		try (FileInputStream fs = new FileInputStream("src/main/resources/"+nomeDB+".properties")) {
 		

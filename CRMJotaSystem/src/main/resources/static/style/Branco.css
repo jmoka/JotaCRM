@@ -4,11 +4,10 @@ body {
 	font-family: Arial, sans-serif;
 }
 
-
-.btnConfiguracao{
-	  background-color: rgb(255, 255, 255);
-	  
+.fundoMenuHear{
+	 background-color: rgb(242, 242, 242);	 
 }
+
 
 
 .Fundonavbar{
@@ -23,4 +22,8 @@ body {
 
 .margem{
 	margin-top: 7%;
+}
+
+.fundo{
+	background-color: rgb(242, 242, 242);		
 }
