@@ -15,9 +15,7 @@ function pretoBranco() {
         estiloPreto.setAttribute('disabled', 'true');
     }
 
-    // Exibe a informação em um alerta (você pode manipular a informação como desejar)
-    alert('O switch checkbox está ' + (checked ? 'Claro' : 'Escuro'));
-
+    
     // Use AJAX para enviar a opção ao servidor
     $.ajax({
         type: 'POST',
