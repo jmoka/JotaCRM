@@ -151,7 +151,7 @@ public class ControllerRelatorioNivel {
 
 			System.out.println("Caminho completo do arquivo: " + caminhoCompleto);
 
-			String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
+			String jrxml = "relatorios/jrxml/nivelPorNome.jrxml";
 
 			ServiceJasperViewer service = new ServiceJasperViewer();
 
@@ -242,7 +242,7 @@ public class ControllerRelatorioNivel {
 		String caminhoCompleto = caminhoSaida + nomeArquivo;
 
 		try {
-			String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
+			String jrxml = "relatorios/jrxml/nivelPorNome.jrxml";
 			ServiceJasperViewer service = new ServiceJasperViewer();
 			service.exportarHTML(jrxml, db.connection(), caminhoCompleto);
 			model.addAttribute("mensagem",
@@ -483,7 +483,7 @@ public class ControllerRelatorioNivel {
 			String caminhoCompleto = caminhoSaida + nomeArquivo;
 
 			try {
-				String jrxml = "relatorios/jrxml/nivelTodos.jrxml";
+				String jrxml = "relatorios/jrxml/nivelPorNome.jrxml";
 				ServiceJasperViewer service = new ServiceJasperViewer();
 				service.exportarHTML(jrxml, db.connection(), caminhoCompleto);
 				// Adiciona parâmetros antes de exportar o html

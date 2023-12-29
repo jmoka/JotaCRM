@@ -8,8 +8,6 @@ body{
 	 background-color: rgb(0, 0, 0);	 
 }
 
-
-
 .text{
 	 color: white;
 }
@@ -18,4 +16,14 @@ body{
 	
 	height: 100%
 	
+}
+.margem{
+	margin-top: 7%;
+}
+
+.color{
+	background-color: rgb(0, 0, 0);
+}
+.color1{
+	background-color: rgb(229, 229, 229);
 }
