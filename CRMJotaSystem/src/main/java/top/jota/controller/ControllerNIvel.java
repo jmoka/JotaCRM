@@ -41,7 +41,7 @@ public class ControllerNIvel implements InterfaceControllerDao{
 			
 		}
 		
-			 return "cadastroNivel";
+		return "redirect:/atualizarListaNivel";
 			
 		
 	}
