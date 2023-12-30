@@ -152,7 +152,8 @@
 											<option selected>Escolha o Relatório</option>
 											<option name="consultarPorTodos" value="1">Todos</option>
 											<option name="consultarPorID" value="2">Consultar por Id</option>
-											<option value="3">Consultar nome</option>
+											<option value="3">Consultar Nome Completo</option>
+											<option value="4">Consultar Qualquer Nome</option>
 										</select>
 										<select id="opcaoImpressao"
 											class="opcaoImpressão form-select form-select-lg mb-3"
@@ -333,6 +334,103 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	<!--MODAL QUALQUER NOME nivelRelatorioQualquerNomeTela -->
+	<div class="modal" tabindex="-1" id="nivelRelatorioQualquerNomeTela" data-idNivel="">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Digite o Nome do Nível</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<form th:action="@{/nivelRelatorioQualquerNomeTela}" method="post" class="d-flex mt-3" role="search">
+						<input name="nomeNivel" id="idNivelRelatorio" class="form-control me-2" type="search"
+							aria-label="Search" placeholder="Informe o Nome do Nível">
+						<button class="btn btn-success" type="submit">Consultar</button>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--MODAL NOME nivelRelatorioQualQualquerNomePDF -->
+	<div class="modal" tabindex="-1" id="nivelRelatorioQualQualquerNomePDF" data-idNivel="">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Digite o Nome do Nível</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<form th:action="@{/nivelRelatorioQualQualquerNomePDF}" method="post" class="d-flex mt-3" role="search">
+						<input name="nomeNivel" id="idNivelRelatorio" class="form-control me-2" type="search"
+							aria-label="Search" placeholder="Informe o Nome do Nível">
+						<button class="btn btn-success" type="submit">Consultar</button>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--MODAL NOME nivelRelatorioQualquerNomeHTML -->
+	<div class="modal" tabindex="-1" id="nivelRelatorioQualquerNomeHTML" data-idNivel="">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Digite o Nome do Nível</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<form th:action="@{/nivelRelatorioQualquerNomeHTML}" method="post" class="d-flex mt-3" role="search">
+						<input name="nomeNivel" id="idNivelRelatorio" class="form-control me-2" type="search"
+							aria-label="Search" placeholder="Informe o Nome do Nível">
+						<button class="btn btn-success" type="submit">Consultar</button>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	<!-- SCRIPT DO ALERT-->
 	<script th:inline="javascript">

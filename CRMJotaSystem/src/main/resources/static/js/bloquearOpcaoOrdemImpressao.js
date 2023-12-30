@@ -19,6 +19,11 @@ function bloquearOpcaoOrdem() {
           opcaoOrdem.disabled = true;
           }
           
+    if(opcaoConsulta.value === '4') { 
+		
+          opcaoOrdem.disabled = true;
+          }
+          
     	
 }
 

@@ -139,6 +139,52 @@ function gerarRelatorioNivel() {
     }
 
 
+
+
+
+// RELATÓRIO POr QUALQUER NOME		
+			//TELA
+	if (opcaoConsulta == "4" && opcaoImpressao == "1") {
+		console.log("4 1");
+
+    	// Seleciona o modal e atribui o Nome
+    		const myModal = document.getElementById('nivelRelatorioQualquerNomeTela');
+    		myModal.setAttribute('data-idNivel', idNivel);
+
+    	// Exibe o modal
+    		const bootstrapModal = new bootstrap.Modal(myModal);
+    		bootstrapModal.show();
+    }
+    
+    		//PDF
+	if (opcaoConsulta == "4" && opcaoImpressao == "2") {
+		console.log("4 2");
+
+    	// Seleciona o modal e atribui o Nome
+    		const myModal = document.getElementById('nivelRelatorioQualQualquerNomePDF');
+    		myModal.setAttribute('data-idNivel', idNivel);
+
+    	// Exibe o modal
+    		const bootstrapModal = new bootstrap.Modal(myModal);
+    		bootstrapModal.show();
+    }
+    
+   			 //HTML
+	if (opcaoConsulta == "4" && opcaoImpressao == "3") {
+		console.log("4 3");
+
+    	// Seleciona o modal e atribui o Nome
+    		const myModal = document.getElementById('nivelRelatorioQualquerNomeHTML');
+    		myModal.setAttribute('data-idNivel', idNivel);
+
+    	// Exibe o modal
+    		const bootstrapModal = new bootstrap.Modal(myModal);
+    		bootstrapModal.show();
+    }
+
+
+
+
 	
 	
 }

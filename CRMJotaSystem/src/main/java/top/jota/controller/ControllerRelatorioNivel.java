@@ -367,7 +367,7 @@ public class ControllerRelatorioNivel {
 					"Relatório HTML Gerado com Sucesso Organizado por NOME !! verifique o Caminho:  "
 							+ caminhoCompleto);
 			db.closeConnection();
-			return "redirect:/pageCadastroNivel";
+			return "redirect:/atualizarListaNivel";
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -399,7 +399,7 @@ public class ControllerRelatorioNivel {
 						+ ", abra o relatório Minimizado ");
 
 				db.closeConnection();
-				return "redirect:/pageCadastroNivel";
+				return "redirect:/atualizarListaNivel";
 			} catch (Exception e) {
 				// Trate a exceção, imprima mensagens ou redirecione para uma página de erro
 				e.printStackTrace();
@@ -497,7 +497,7 @@ public class ControllerRelatorioNivel {
 						"Relatório HTML Gerado com Sucesso Organizado por NOME !! verifique o Caminho:  "
 								+ caminhoCompleto);
 				db.closeConnection();
-				return "redirect:/pageCadastroNivel";
+				return "redirect:/atualizarListaNivel";
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -507,6 +507,145 @@ public class ControllerRelatorioNivel {
 			return null;
 
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		// RELATÓRIO POR QUALQUER NOME
+
+				// TELA
+				@PostMapping("/nivelRelatorioQualquerNomeTela")
+				public String nivelRelatorioQualquerNomeTela(@RequestParam("nomeNivel") String nomeNivel, Model model) {
+				
+
+					DbProperties dbProperties = null;
+					Db db = new Db(dbProperties);
+					ServiceJasperViewer service = new ServiceJasperViewer();
+
+					try {
+						// Adiciona parâmetros e obtém JasperPrint
+						service.addParams("nomeNivel", nomeNivel);
+						service.abrirJasperViewer("relatorios/jrxml/nivelPorQualquerNome.jrxml", db.connection());
+						model.addAttribute("mensagem", "Relatório na Tela Gerado com Sucesso com Nome Escolhido " + nomeNivel
+								+ ", abra o relatório Minimizado ");
+
+						db.closeConnection();
+						return "redirect:/atualizarListaNivel";
+					} catch (Exception e) {
+						// Trate a exceção, imprima mensagens ou redirecione para uma página de erro
+						e.printStackTrace();
+						return null;
+					}
+				}
+				
+				
+				// PDF
+				@PostMapping("/nivelRelatorioQualQualquerNomePDF")
+				public String nivelRelatorioQualQualquerNomePDF(@RequestParam("nomeNivel") String nomeNivel, Model model) {
+					DbProperties dbProperties = new DbProperties(); 
+					Db db = new Db(dbProperties);
+
+					try {
+						Properties props = dbProperties.obterProperties("exportarRelatorio");
+
+						// Gere uma UUID
+						UUID extensao = UUID.randomUUID();
+
+						// Obtenha o caminho de saída do arquivo do properties
+						String caminhoSaida = props.getProperty("caminhoSaida");
+
+						// Gere o nome do arquivo com a extensão ".pdf"
+						String nomeArquivo = "\\relatorio-" + extensao + ".pdf";
+
+						// Concatene o caminho de saída com o nome do arquivo
+						String caminhoCompleto = caminhoSaida + nomeArquivo;
+
+						System.out.println("Caminho completo do arquivo: " + caminhoCompleto);
+
+						String jrxml = "relatorios/jrxml/nivelPorQualquerNome.jrxml";
+
+						ServiceJasperViewer service = new ServiceJasperViewer();
+
+						// Adiciona parâmetros antes de exportar o PDF
+						service.addParams("nomeNivel", nomeNivel);
+
+						// Abra um FileOutputStream
+						try (FileOutputStream outputStream = new FileOutputStream(caminhoCompleto)) {
+							service.exportarPDFcloseOutputStream(jrxml, db.connection(), outputStream);
+						}
+
+						// Redirecionar para a visualização do relatório
+						model.addAttribute("mensagem",
+								"Relatório PDF Gerado com Sucesso com ID Escolhido nº " + nomeNivel + " no Caminho:  " + caminhoCompleto);
+
+						db.closeConnection();
+						return "redirect:/atualizarListaNivel";
+
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						db.closeConnection();
+					}
+
+					return null;
+				}
+				
+				// HTML
+				@PostMapping("/nivelRelatorioQualquerNomeHTML")
+				public String nivelRelatorioQualquerNomeHTML(@RequestParam("nomeNivel") String nomeNivel, Model model) {
+					DbProperties dbProperties = new DbProperties();
+					Db db = new Db(dbProperties);
+
+					Properties props = dbProperties.obterProperties("exportarRelatorio");
+
+					// Gere uma UUID
+					UUID extencao = UUID.randomUUID();
+
+					// Obtenha o caminho de saída do arquivo do properties
+					String caminhoSaida = props.getProperty("caminhoSaida");
+
+				
+					String nomeArquivo = "\\relatorio-" + extencao + ".html";
+
+					// Concatene o caminho de saída com o nome do arquivo
+					String caminhoCompleto = caminhoSaida + nomeArquivo;
+					
+					
+					
+
+					try {
+						
+						ServiceJasperViewer service = new ServiceJasperViewer();
+
+						// Adiciona parâmetros antes de exportar o PDF
+						service.addParams("nomeNivel", nomeNivel);
+						
+						
+						String jrxml = "relatorios/jrxml/nivelPorQualquerNome.jrxml";
+						
+						service.exportarHTML(jrxml, db.connection(), caminhoCompleto);
+						model.addAttribute("mensagem",
+								"Relatório HTML Gerado com Sucesso Organizado por NOME !! verifique o Caminho:  "
+										+ caminhoCompleto);
+						db.closeConnection();
+						return "redirect:/atualizarListaNivel";
+
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					db.closeConnection();
+
+					return null;
+
+				}
+				
+		
+		
+		
 		
 	
 
